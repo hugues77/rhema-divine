@@ -1,0 +1,183 @@
+ .header{
+    background-image: url('../images/entete_rhema.PNG');
+    min-height: 70vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+
+}
+
+/*css de page home --test video*/
+
+.v-header{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.container1{
+    max-width: 960px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: auto;
+    text-align: center;
+}
+.full-screem{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.full-screem video{
+    min-width: 100%;
+    min-height: 100%;
+}
+.header-overlay{
+    height: 100vh;
+    width: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgb(97, 162, 206, 0.85);
+    z-index: 1;
+  
+}
+
+.header-content{
+    z-index: 50px;
+}
+
+.header-content h1{
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.header-content p{
+    font-size: 1.5em;
+    display: block;
+    padding-bottom: 2rem;
+}
+.btn1{
+    background-color: brown;
+    color: white;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* fin css de page home --test video*/
+.heure{
+    background-color: black;
+    border-radius: 20px 0px 0px 0px;
+    padding: 5px;
+}
+
+hr.blanc{
+    border: 5px solid rgb(175, 171, 171);
+}
+hr.rouge{
+    border: 5px solid red;
+}
+hr.bleu{
+    border: 5px solid rgb(18, 18, 231);
+}
+/* border radius pour verset biblique*/
+.radius{
+    border-radius: 15px 0 15px 0;
+}
+
+/* background image les deux omers*/
+.bg-omers{
+    background-image: url(../images/monde.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-softhandy{
+    background-color: black;
+}
+.size{
+    font-size: 4em;
+}
+img.taille{
+    width: 180px;
+    height: 90px;
+}
+img.img-pred{
+    
+    height:200px;
+}
+
+/*css pour bouton upload */
+.upload .browse input[type='file']{
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 3px;
+    height: 1px;
+    width: 1px;
+    z-index: -5;
+}
+
+ul li a:hover{
+    border-bottom:3px solid rgb(241, 99, 17);
+}
+
+/*police */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto&family=Rubik:ital,wght@0,300;1,500&display=swap');
+
+li{
+    font-family: 'Oswald', sans-serif;
+}
+h4{
+font-family: 'Rubik', sans-serif;
+}
+
+/* bouton charger image */
+/*input[type='file']{
+    display: none; 
+}*/
+.file-form{
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+   
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    
+ }
+
+/*Mot de passe rhema divine pour les adresses du site: boris et joe
+Rhema@2020 
+pour handy@rhema-divine.com :Nobizo@243 
+*/
+
