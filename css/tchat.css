@@ -249,7 +249,17 @@
     font-size: 20px;
 }
 
-.action_menu {
+
+/* css pour action topbar/ action_topbar*/
+
+#action_topbar_btn {
+    position: absolute;
+    color: white;
+    cursor: pointer;
+}
+
+.action_menu,
+.action_topbar {
     z-index: 1;
     position: absolute;
     padding: 15px 0;
@@ -261,13 +271,15 @@
     display: none;
 }
 
-.action_menu ul {
+.action_menu ul,
+.action_topbar ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.action_menu ul li {
+.action_menu ul li,
+.action_topbar ul li {
     width: 100%;
     padding: 10px 15px;
     margin-bottom: 5px;
@@ -280,6 +292,11 @@
 .action_menu ul li:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.action_topbar ul li:hover {
+    cursor: pointer;
+    background-color: rgba(219, 53, 53, 0.877);
 }
 
 @media(max-width: 576px) {

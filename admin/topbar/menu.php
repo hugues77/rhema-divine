@@ -4,6 +4,7 @@
 if(isset($_SESSION['admin'])){
 $req = $connexion->query("SELECT profil FROM admins WHERE email ='{$_SESSION['admin']}'  ");
 $res = $req->fetchobject();
+
 }
 ?>
 
@@ -71,7 +72,7 @@ $res = $req->fetchobject();
       </li>
     </ul>
     <div>
-      <img src="../images/<?=$res->profil?>" class="rounded-circle" width="40px" alt="">
+      <img src="../images/<?=$res->profil?>" class="rounded-circle" width="40px" alt="<?=$res->profil?>">
     </div>
     <?php
         }

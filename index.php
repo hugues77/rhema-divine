@@ -1,5 +1,5 @@
 <?php
-    session_start();
+   session_start();
     include 'functions/main-functions.php';
     
     $pages = scandir('pages/');
@@ -12,7 +12,6 @@
     }else{
       $page = "index";
     }
-
 
     $pages_functions = scandir('functions/');
     if(in_array($page.'.func.php',$pages_functions)){

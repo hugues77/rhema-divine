@@ -1,7 +1,19 @@
 <?php
    
     include 'main-functions.php';
-    $heure = date("H:i"); ?>
+    $heure = date("H:i"); 
+    
+    /**
+     * conexion a la base de données pour recuperer photo de profil
+     * et le nom, connecté en tant que..
+     */
+    if(isset($_SESSION['email']) || isset($_SESSION['pseudo'])){
+        $req = "SELECT * FROM membre WHERE email ='{$_SESSION['email']}' OR pseudo ='{$_SESSION['pseudo']}' ";
+        $profil = $connexion->query($req);
+        $res = $profil->fetchObject();
+    }
+    
+    ?>
 
 <html lang="fr_FR">
 <head>
@@ -32,13 +44,19 @@
                         date_default_timezone_set('Europe/Paris');
                         echo strftime("%A %d %B %Y" . "  " . ' <span class="ml-2 pl-3 pr-3 btn btn-danger">'. $heure .' </span>'.' '); 
                         ?> 
-                        <a href="#exampleModal"  class="" data-toggle="modal" data-target="#exampleModal" > <div class="btn btn-outline-danger ml-2">Se Connecter</div><!--  <img class="rounded-circle user_profil ml-3" src="images/tchat/olive.jpg"/>--></a> 
+                        <?php echo(isset($_SESSION['email']) || isset($_SESSION['pseudo'])) ? ' <span class="myPopover" id="action_topbar_btn" data-toggle="popover" data-placement="right" title="Vous etes connectés" data-trigger="hover"><img class="rounded-circle user_profil ml-3" src="images/tchat/'.$res->image.'"/>'.' '.$_SESSION['pseudo'].'</span>' : '<div id="html"><a href="#exampleModal"  class="" data-toggle="modal" data-target="#exampleModal" ><div class="btn btn-outline-danger ml-2">Se Connecter</div></a></div> ' ?>
                     </div>
-                    
+                    <div class="action_topbar">
+						<ul>
+						    <li><i class="fas fa-user-circle mr-2"></i> Voir mon profil</li>
+							<li><i class="fas fa-cogs mr-2"></i> Paramètres du compte</li>
+							<li><i class="fas fa-question-circle mr-2"></i> Aide et Assistance</li>
+							<li><i class="fas fa-power-off mr-2"></i><a href="index.php?page=logout"> Se déconnecter</a></li>
+						</ul>
+					</div>
             </div>
         </div>
     </div>
-
     <!-- menu-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="index.php"><img src="images/rd.png" class="rounded" width="15%"/>Rhema divine</a>
@@ -78,7 +96,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Poursuivre avec Facebook <img src="images/facebook.png" width="7%" alt=""></h5>
@@ -93,43 +111,9 @@
                 <img src="images/user-female.png" alt="Modérateur" class="text-center" width="160px">
             </div>
             <h4 class="text-center mt-2">Se connecter</h4>
-            <?php
-                if(isset($_POST['submit'])){
-                    $nom = htmlentities(trim($_POST['mail']));
-                    $pswd = htmlentities(trim($_POST['pswd']));
-                    $errors = [];
-                    if(empty($nom) || empty($pswd)){
-                        ?>
-                        <script>swal("Hello world!");</script>
-                        <?php
-                    }
-                    /**
-                     * verifier si le pseudo ou email existe dans la base
-                     */
-                    $tab = [
-                        'email'  =>$nom,
-                        'pseudo'  =>$nom,
-                        'password'=>sha1($pswd)
-                    ];
-                    $sql = "SELECT * FROM membre WHERE password=:password AND (email=:email OR pseudo=:pseudo)";
-                    $req = $connexion->prepare($sql);
-                    $req->execute($tab);
-                    $res = $req->rowCount($sql);
-                    if($res){
-                        $errors['user'] = "Cet utilisateur n'existe pas, Merci de verifier les identifiants svp";
-                    }
-                    if(!empty($errors)){
-                        foreach($errors as $error){
-                            ?>
-                            <div class="alert alert-danger"><?=$error?></div>
-                            <?php
-                        }
-                    }
-                }
-            ?>
-            <form action="" method="POST" class="form-group">
-                <input type="email"  class="form-control" name="mail" placeholder="votre e-mail ou pseudo">
-                <input type="password"  class="form-control mt-2" name="pswd" placeholder="votre Mot de passe">
+            <form action="index.php?page=conn_members" method="POST" class="form-group">
+                <input type="text"  class="form-control" name="email" placeholder="votre e-mail ou pseudo">
+                <input type="password"  class="form-control mt-2" name="password" placeholder="votre Mot de passe">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-check">

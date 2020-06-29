@@ -13,6 +13,9 @@ function verif($pseudo,$code,$email){
     return $success;
 }
 
+/**
+ * function pour remettre token à zero
+ */
 function token_zero($email,$pseudo){
     global $connexion;
     $tab = [
