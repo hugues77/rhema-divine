@@ -36,23 +36,28 @@ if(isset($_POST['confirm'])){
     $public = isset($_POST['public']) ? "1" : '';
     $condition = isset($_POST['condition']) ? "1" : '';
 
-    $errors = [];
+    //$errors = [];
     if(($public != 1)  || ($condition != 1)){
-        $errors['cocher'] = "veuillez accepter les conditions générales et/ou rendre public l'article svp";
+        //$errors['cocher'] = "veuillez accepter les conditions générales et/ou rendre public l'article svp";
+        $_SESSION['alert'] = "veuillez accepter les conditions générales et/ou rendre public l'article svp";
+        $_SESSION['alert_code'] = "error";
     }
     else if(empty($titre) || empty($descript) || empty($nomNouveau) || empty($fichier)){
-        $errors['empty'] = "veuillez remplir tous les champs svp";
+        //$errors['empty'] = "veuillez remplir tous les champs svp";
+        $_SESSION['alert'] = "veuillez remplir tous les champs svp";
+        $_SESSION['alert_code'] = "error";
     }
     
 
 
-if(!empty($errors)){
+/* if(!empty($errors)){
     foreach($errors as $error){
         ?>
         <div class="alert alert-danger mt-2"><?= $error?></div>
         <?php
     }
-}else{
+} */
+else{
     $msg ="";
     $fileZise = $_FILES['fichier']['size'];
     $fileName = $_FILES['fichier']['name'];
@@ -84,10 +89,14 @@ if(!empty($errors)){
             $req->execute($e);
         
             if( $Move){
-                $msg = "La modification est éffectuée avec succès, shaloom";
+                //$msg = "La modification est éffectuée avec succès, shaloom";
+                $_SESSION['alert'] = "La modification est éffectuée avec succès, shaloom";
+                $_SESSION['alert_code'] = "success";
                 }
         }else{
-            $msg = "la taille du fichier est trop grande, compresser svp";
+            //$msg = "La taille du fichier est trop grande, compresser svp";
+            $_SESSION['alert'] = "La taille du fichier est trop grande, compresser svp";
+            $_SESSION['alert_code'] = "error";
         }
         
 
@@ -98,13 +107,13 @@ if(!empty($errors)){
 
 ?>
 
-<?php
-if(isset($msg)){
-    ?>
+<!-- <?php
+//if(isset($msg)){
+   // ?>
     <div class="alert alert-success mt-2"><?=$msg?></div>
     <?php
-}
-?>
+//}
+?> -->
     <h2>Modifier Article</h2><hr>
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
@@ -119,7 +128,10 @@ if(isset($msg)){
             <div class="row">
                 <div class="col-md-6">
                     <input type="text" name="nomNouveau" placeholder="Nouveau nom de l'image" class="form-control"><br>
-                    <input type="file" class="formcontrol" name="fichier" id="photo" value="<?=$result->image ?>">
+                    <!-- <input type="file" class="formcontrol" name="fichier" id="photo" value="<?=$result->image ?>"> -->
+                    <input type="file" class="formcontrol" name="fichier" id="real-file" value="<?=$result->image ?>" hidden="hidden" >
+                    <button class="btn btn-outline-danger " type="button" id="custom-button"><i class="fas fa-camera mr-2"></i>Choisir un fichier</button>
+                    <span id="custom-text">Aucun fichier choisi</span>
                 </div>
                 <div class="col-md-3 form-check">
                     <input type="checkbox" name="public" class="form-check-input" <?php echo ($result->poster =="1") ? "checked" : "" ?> id="check">

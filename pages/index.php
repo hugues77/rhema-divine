@@ -220,9 +220,13 @@
     <!-- debut section droite widgets -->
           <div class="col-xs-12 col-sm-12 col-lg-3  col-md-3 ">
               <h2 class="text-center text-danger">Faire Un Don</h2><hr class="rouge"/>
-              <div class="mb-2">
-                <a class="card" href="https://www.paypal.com"><img class="img-thumbnail" src="images/logo_paypal.jpg" width="400px" /></a>
-              </div>  
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="JD2JAP9ACUW7W" />
+                <input type="image" src="http://rhema-divine.com/images/logo-paypal.jpg" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                <img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
+              </form>
+  
               <h2 class="text-danger text-center">Nos Emissions</h2><hr class="rouge"/>
               <div class="accordion text-secondary" id="accordionExample">
               <div class="card">

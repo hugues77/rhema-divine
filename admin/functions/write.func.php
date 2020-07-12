@@ -36,3 +36,21 @@
 //     move_uploaded_file($tmp_name, "images/Admin/functions".$id.$extension);
 
 // }
+
+//fonction pour verifier si l'url youtube existe déjà
+function verif_Url_youtube($url){
+    
+        //verifier mail et mot de passe du Admin
+        //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+        global $connexion;
+        $array = [
+            'url_youtub' => $url
+        ];
+        $sql = "SELECT * FROM article WHERE url_youtub = :url_youtub";
+        $req = $connexion->prepare($sql);
+        $req->execute($array);
+    
+        $exist_url = $req->rowCount($sql);
+        return $exist_url;
+        //var_dump($exist);
+}

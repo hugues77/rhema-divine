@@ -289,6 +289,11 @@
     padding-right: 10px;
 }
 
+.action_topbar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
 .action_menu ul li:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
@@ -297,6 +302,7 @@
 .action_topbar ul li:hover {
     cursor: pointer;
     background-color: rgba(219, 53, 53, 0.877);
+    text-decoration: none;
 }
 
 @media(max-width: 576px) {

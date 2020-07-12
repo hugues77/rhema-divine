@@ -5,10 +5,7 @@
                     $pswd = htmlentities(trim($_POST["password"]));
                     $errors = [];
 
-                    if(empty($nom) || empty($pswd)){
-                        $errors['empty'] = "Vous devez remplir tous les champs svp";
-                    }
-                    /**
+                                        /**
                      * verifier si le pseudo ou email existe dans la base
                      */
                     $tab = [
@@ -20,13 +17,20 @@
                     $req = $connexion->prepare($sql);
                     $req->execute($tab);
                     $rest = $req->rowCount($sql);
-                    if(!$rest){
-                        $errors['user'] = "Cet utilisateur n'existe pas, Merci de verifier les identifiants svp";
+
+                    if(empty($nom) || empty($pswd)){
+                        $errors['empty'] = "Vous devez remplir tous les champs svp";
+                    }
+
+                    elseif(!$rest){
+                        $errors['user'] = "Cet utilisateur n'existe pas, Merci de verifier vos identifiants svp";
                     }
                     if(!empty($errors)){
                         foreach($errors as $error){
+                            $_SESSION['alert'] = $error;
+                            $_SESSION['alert_code'] = "error";
                             ?>
-                            <div class="alert alert-danger"><?=$error?></div>
+                            <!-- <div class="alert alert-danger"></div> -->
                             <?php
                         }
                     }else{

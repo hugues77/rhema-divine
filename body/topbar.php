@@ -10,7 +10,7 @@
     if(isset($_SESSION['email']) || isset($_SESSION['pseudo'])){
         $req = "SELECT * FROM membre WHERE email ='{$_SESSION['email']}' OR pseudo ='{$_SESSION['pseudo']}' ";
         $profil = $connexion->query($req);
-        $res = $profil->fetchObject();
+        $res = $profil->fetchAll(PDO::FETCH_OBJ);
     }
     
     ?>
@@ -43,8 +43,18 @@
                         setlocale(LC_TIME, 'fr_FR');
                         date_default_timezone_set('Europe/Paris');
                         echo strftime("%A %d %B %Y" . "  " . ' <span class="ml-2 pl-3 pr-3 btn btn-danger">'. $heure .' </span>'.' '); 
+                        
+                        //On affiche proto profil et pseudo de l'utilisateur connectés
+                         if(isset($_SESSION['email']) || isset($_SESSION['pseudo'])){
+                            foreach($res as $profil){
+                                $_SESSION['nom'] = $profil->nom;
+                                $_SESSION['prenom'] =$profil->prenom;
+                               echo ' <span class="myPopover" id="action_topbar_btn" data-toggle="popover" data-placement="right" title="Vous etes connectés" data-trigger="hover"><img class="rounded-circle user_profil ml-3" src="images/tchat/'.$profil->image.'"/>'.' '.$profil->pseudo.'</span>';
+                            }
+                         } else{
+                            echo '<span id="html"><a href="#exampleModal"  class="" data-toggle="modal" data-backdrop="static" data-target="#exampleModal" ><div class="btn btn-outline-danger ml-2">Se Connecter</div></a></span> ' ; 
+                         } 
                         ?> 
-                        <?php echo(isset($_SESSION['email']) || isset($_SESSION['pseudo'])) ? ' <span class="myPopover" id="action_topbar_btn" data-toggle="popover" data-placement="right" title="Vous etes connectés" data-trigger="hover"><img class="rounded-circle user_profil ml-3" src="images/tchat/'.$res->image.'"/>'.' '.$_SESSION['pseudo'].'</span>' : '<div id="html"><a href="#exampleModal"  class="" data-toggle="modal" data-target="#exampleModal" ><div class="btn btn-outline-danger ml-2">Se Connecter</div></a></div> ' ?>
                     </div>
                     <div class="action_topbar">
 						<ul>
@@ -76,7 +86,7 @@
                     <a class="nav-link" href="index.php?page=messagerie">Messagerie</a>
                 </li>
                 <li class="nav-item <?php echo($page == "bible")? "active": ""  ?>">
-                    <a class="nav-link" href="index.php?page=bible">Lire la Bible</a>
+                    <a class="nav-link" href="https://emcitv.com/bible/lire-la-bible.html" target="_blank">Lire la Bible</a>
                 </li>
                 <li class="nav-item <?php echo($page == "trouver_eglise")? "active": ""  ?>">
                     <a class="nav-link" href="index.php?page=trouver_eglise">Trouvez une église</a>
@@ -105,39 +115,37 @@
         </button>
       </div>
       <div class="modal-body">
-      <div class="">
-        <div class=" mt-2 mb-2">
-            <div class="mt-2 text-center">
-                <img src="images/user-female.png" alt="Modérateur" class="text-center" width="160px">
-            </div>
-            <h4 class="text-center mt-2">Se connecter</h4>
-            <form action="index.php?page=conn_members" method="POST" class="form-group">
-                <input type="text"  class="form-control" name="email" placeholder="votre e-mail ou pseudo">
-                <input type="password"  class="form-control mt-2" name="password" placeholder="votre Mot de passe">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
+        <div class="">
+            <div class=" mt-2 mb-2">
+                <div class="mt-2 text-center">
+                    <img src="images/user-female.png" alt="Modérateur" class="text-center " width="160px">
+                </div>
+                <h4 class="text-center mt-2">Se connecter</h4>
+                <form action="index.php?page=conn_members" method="POST" class="form-group">
+                    <input type="text"  class="form-control" id="email" name="email" placeholder="votre e-mail ou pseudo">
+                    <input type="password"  class="form-control mt-2"  id="password" name="password" placeholder="votre Mot de passe">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <span class=""><a href="">Mot de passe oublié</a></span>
                         </div>
                     </div>
-                    <div class="col-md-6 text-right">
-                        <span class=""><a href="">Mot de passe oublié</a></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="submit" name="submit" class="btn btn-primary mt-2 btn-block ">connexion</button>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="index.php?page=inscription" type="submit" name="submit" class="btn btn-primary mt-2 btn-block ">créer un compte</a>
-                    </div>
-                    
-                </div>
-                
-            </form>
-        </div>   
-    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="submit" name="submit" id="connexionMembre" class="btn btn-primary mt-2 btn-block ">connexion</button>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="index.php?page=inscription" type="submit" name="submit" class="btn btn-primary mt-2 btn-block ">créer un compte</a>
+                        </div>
+                    </div>   
+                </form>
+            </div>   
+        </div>
       </div>
     </div>
   </div>

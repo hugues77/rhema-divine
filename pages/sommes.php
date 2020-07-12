@@ -54,25 +54,27 @@
     <div class="card-body px-lg-5 pt-0">
 
         <!-- Form -->
-        <form class="text-center" style="color: #757575;" action="#!">
-
+        <form class="text-center" style="color: #757575;" action="" method="POST">
+            <?php
+            //verification si le bouton est soumis
+            ?>
             <!-- Name -->
             <div class="form-group mt-3">
                 <label for="materialContactFormName">Nom complet</label>
-                <input type="text" id="materialContactFormName" class="form-control">
+                <input type="text" id="materialContactFormName" name="nom" class="form-control">
                 
             </div>
 
             <!-- E-mail -->
             <div class="form-group">
                 <label for="materialContactFormEmail">E-mail</label>
-                <input type="email" id="materialContactFormEmail" class="form-control">
+                <input type="email" id="materialContactFormEmail" name="email" class="form-control">
                 
             </div>
 
             <!-- Subject -->
             <span>Sujet du Message</span>
-            <select class="custom-select">
+            <select class="custom-select" name="sujet">
                 <option value="" disabled>Chosir une option</option>
                 <option value="1" selected>Demande de prière</option>
                 <option value="2">Question pour une émission</option>
@@ -83,17 +85,17 @@
             <!--Message-->
             <div class="form-group">
                 <label for="materialContactFormMessage">Message</label>
-                <textarea id="materialContactFormMessage" class="form-control" rows="3"></textarea>
+                <textarea id="materialContactFormMessage" class="form-control"  name="message" rows="3"></textarea>
             </div>
 
             <!-- Copy -->
             <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="materialContactFormCopy">
+                <input type="checkbox" class="form-check-input" id="materialContactFormCopy" name="send">
                 <label class="form-check-label" for="materialContactFormCopy">Envoyez-moi une copie de ce message</label>
             </div>
 
             <!-- Send button -->
-            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Send</button>
+            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="submit" type="submit">Send</button>
 
         </form>
         <!-- Form -->

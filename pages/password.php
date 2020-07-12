@@ -5,42 +5,52 @@
                     $password1 = htmlspecialchars(trim($_POST['password1']));
                     $password2 = htmlspecialchars(trim($_POST['password2']));
                     $profil= $_FILES['profil'];
-
-                    $errors = [];
+                     //verifier l'extension du fichier
+                     $nomFichier = $_FILES['profil']['name'];
+                     $typeFichier = $_FILES['profil']['type'];
+                     $sizeFichier = $_FILES['profil']['size'];
+                     $tmpFichier =  $_FILES['profil']['tmp_name'];
+                     $errorFichier = $_FILES['profil']['error'];
+                     $extensions = ['.png','.PNG','.jpg','.JPG','.jpeg','.JPEG','.gif','.GIF'];
+                     $ext =strchr($nomFichier,'.');
+                     $destination = "images/tchat/".$nomFichier;
+                    //$errors = [];
                     if(empty($password1) || empty($password2) || empty($profil)){
-                        $errors['empty'] = "Veuillez remplir tous les champs svp";
+                        //$errors['empty'] = "Veuillez remplir tous les champs svp";
+                        $_SESSION['alert'] = "Veuillez remplir tous les champs svp";
+                        $_SESSION['alert_code'] = "error";
+                        
                     }
-                    if($password1 != $password2){
-                        $errors['password'] = "Les deux mot de passe ne sont pas identiques, vérifier svp";
+                    elseif($password1 != $password2){
+                        //$errors['password'] = "Les deux mot de passe ne sont pas identiques, vérifier svp";
+                        $_SESSION['alert'] = "Les deux mot de passe ne sont pas identiques, vérifier svp";
+                        $_SESSION['alert_code'] = "error";
                     }
-                    //verifier l'extension du fichier
-                    $nomFichier = $_FILES['profil']['name'];
-                    $typeFichier = $_FILES['profil']['type'];
-                    $sizeFichier = $_FILES['profil']['size'];
-                    $tmpFichier =  $_FILES['profil']['tmp_name'];
-                    $errorFichier = $_FILES['profil']['error'];
-                    $extensions = ['.png','.PNG','.jpg','.JPG','.jpeg','.JPEG','.gif','.GIF'];
-                    $ext =strchr($nomFichier,'.');
-                    $destination = "images/tchat/".$nomFichier;
-                    
-                    if(!in_array($ext,$extensions)){
-                        $errors['extension'] = "L'extension n'est pas autorisée";
+                    elseif(!in_array($ext,$extensions)){
+                        //$errors['extension'] = "L'extension n'est pas autorisée";
+                        $_SESSION['alert'] = "L'extension du fichier n'est pas autorisée";
+                        $_SESSION['alert_code'] = "error";
                     }
-                    if($errorFichier != 0){
-                        $errors['erreur'] = "Le téléchargement a échoué, merci de reessayer";
+                    elseif($errorFichier != 0){
+                        //$errors['erreur'] = "Le téléchargement a échoué, merci de reessayer";
+                        $_SESSION['alert'] = "Le téléchargement a échoué, merci de reessayer";
+                        $_SESSION['alert_code'] = "error";
                     }
-                    if($sizeFichier > 2000000){
-                        $errors['size'] = "La taille du fichier est trop volumeux";
+                    elseif($sizeFichier > 2000000){
+                        //$errors['size'] = "La taille du fichier est trop volumeux";
+                        $_SESSION['alert'] = "La taille du fichier est trop volumeux";
+                        $_SESSION['alert_code'] = "error";
                     }
               
 
-                    if(!empty($errors)){
+                   /*  if(!empty($errors)){
                         foreach($errors as $error){
                             ?>
                             <div class="alert alert-danger"><?=$error?></div>
                             <?php
                         }
-                    }else{
+                    } */
+                    else{
                         //rediger l'enregistrement, sans oublier verifier l'extension du fichier
                         upload_pass($password1,$nomFichier);
                         move_uploaded_file($tmpFichier,$destination);

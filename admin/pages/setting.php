@@ -53,18 +53,7 @@ if(admin() != 1){
                 $mail2 =  htmlspecialchars(trim($_POST['mail2']));
                 $role =  htmlspecialchars(trim($_POST['role']));
 
-                $errors =[];
-                if(empty($name) || empty($mail) || empty($mail2)){
-                    $errors['empty'] = "Merci de remplir tous les champs de saisie svp";
-                }
-                if(!filter_var($mail,FILTER_VALIDATE_EMAIL)){
-                    $errors['email'] = "L'adresse mail est invalide. Vérifier svp";
-                }
-
-                if($mail != $mail2){
-                    $errors['different'] = "Les deux adresses email ne sont pas identiques. Vérifier";
-                }
-
+                //$errors =[];
                 //-----------------------------------------------------------------------
                 // on verifie si l'adresse email n'appartient pas à un autre moderateur ou admin
                 // on compare avec tous les emails qu'on a deja stoché dans la base de données
@@ -78,26 +67,48 @@ if(admin() != 1){
                 $req->execute($tab);
                 $free = $req->rowCount($sql);
 
-                if($free){
-                    $errors['taken'] = "L'adresse email est déjà assignée à un autre modérateur";
-                }
-
-                //-----------------------------------------------------------------------
+                                //-----------------------------------------------------------------------
                 // on va creer un Token aleatoire
                 // on va l'envoyer pour confirmer le mail
                 //--------------------------------------------
                 $chars = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN1234567890";
                 $token = substr(str_shuffle(str_repeat($chars,30)),0,30);
 
+                if(empty($name) || empty($mail) || empty($mail2)){
+                    //$errors['empty'] = "Merci de remplir tous les champs de saisie svp";
+                    $_SESSION['alert'] = "Merci de remplir tous les champs de saisie svp";
+                    $_SESSION['alert_code'] = "error";
+                }
+                elseif(!filter_var($mail,FILTER_VALIDATE_EMAIL)){
+                    //$errors['email'] = "L'adresse mail est invalide. Vérifier svp";
+                    $_SESSION['alert'] = "L'adresse mail est invalide. Vérifier svp";
+                    $_SESSION['alert_code'] = "error";
+                }
+
+                elseif($mail != $mail2){
+                    //$errors['different'] = "Les deux adresses email ne sont pas identiques. Vérifier";
+                    $_SESSION['alert'] = "Les deux adresses email ne sont pas identiques. Vérifier";
+                    $_SESSION['alert_code'] = "error";
+                }
+
+                elseif($free){
+                    //$errors['taken'] = "L'adresse email est déjà assignée à un autre modérateur";
+                    $_SESSION['alert'] = "L'adresse email est déjà assignée à un autre modérateur";
+                    $_SESSION['alert_code'] = "error";
+                }
+
+
+
                 //on verifi si pas d'erreur, on demmarre
-                if(!empty($errors)){
+               /*  if(!empty($errors)){
                     foreach($errors as $error){
                         ?>
                         <div class="alert alert-danger"><?=$error .'<br>'?></div>
                         <?php
                     }
 
-                }else{
+                } */
+                else{
 
                     //-----------------------------------------------------------------------
                 // on va creer un le traitement pour ajouter le moderateur
@@ -114,8 +125,10 @@ if(admin() != 1){
                 $reqt = $connexion->prepare($sqle);
                 $so = $reqt->execute($tabl);
                 if($so){
+                    $_SESSION['alert'] = "Très bien, L'opération reussie";
+                    $_SESSION['alert_code'] = "success";
                     ?>
-                    <div class="alert alert-success">L'opération reussie. Merci</div>
+                    <!-- <div class="alert alert-success">L'opération reussie. Merci</div> -->
                     <?php
                     //-----------------------------------------------------------
                     //envoie du mail une fois le modo est enregistré dans la base
@@ -177,16 +190,7 @@ if(admin() != 1){
                             </div>
                         </div>
                         </section>
-                        <!-- fin section softhandy -->
-                            <!-- Optional JavaScript -->
-                            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                            <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
-                            <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
-                            <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
-                            
-                            <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-                            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.caroufredsel/6.2.1/jquery.carouFredSel.packed.js'></script>
-                    </div>    
+                   </div>    
                     </body>
                     </html>
                     ";
@@ -196,8 +200,10 @@ if(admin() != 1){
 
                     mail($mail, $subject,$message,$header);
                 }else {
+                    $_SESSION['alert'] = "L'opération échouée. Désolé";
+                    $_SESSION['alert_code'] = "error";
                     ?>
-                    <div class="alert alert-danger">L'opération échouée. Désolé</div>
+                   <!--  <div class="alert alert-danger">L'opération échouée. Désolé</div> -->
                     <?php
                 }
                         
@@ -288,7 +294,13 @@ if(admin() != 1){
                 <?php 
                     } 
                 } else{ ?>
-                    <div class="alert alert-danger">Acun Commentaire à validé, Merci</div>
+                    <!-- <div class="alert alert-danger">Acun Commentaire à validé, Merci</div> -->
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Attention ! </strong>Acun Commentaire à validé, Merci.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                    <?php 
                 }?>
                 

@@ -2,25 +2,43 @@
 
 <?php
 if(isset($_POST['formcomments'])){
-    $name = htmlspecialchars(trim($_POST['nom']));
-    $prenom = htmlspecialchars(trim($_POST['prenom']));
-    $email = htmlspecialchars(trim($_POST['email']));
+    if(!isset($_SESSION['nom'])){
+        $name = htmlspecialchars(trim($_POST['nom']));
+    }
+     else{
+         $name = $_SESSION['nom'];
+     }
+     if(!isset($_SESSION['prenom'])){
+        $prenom = htmlspecialchars(trim($_POST['prenom']));
+    }
+     else{
+        $prenom = $_SESSION['prenom'];
+     }
+     if(!isset($_SESSION['email'])){
+        $email = htmlspecialchars(trim($_POST['email']));
+    }
+     else{
+        $email = $_SESSION['email'];
+     }
+    
     $comment = htmlspecialchars(trim($_POST['comment']));
-    $errors = [];
+    //$errors = [];
 
     if(empty($name) || empty($email) || empty($comment)){
-        $errors['empty'] = "Tous les champs doivent etre remplis. Merci";
-    }else{
-        
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errors['email'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
-        }else{
-            //$msg = "commentaire envoyé avec succès,Mais pas enregistrer. merci";
+        //$errors['empty'] = "Tous les champs doivent etre remplis. Merci";
+        $_SESSION['alert'] = "Tous les champs doivent etre remplis. Merci";
+        $_SESSION['alert_code'] = "error";
+    }
+    
+    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            //$errors['email'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
+            $_SESSION['alert'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
+            $_SESSION['alert_code'] = "error";
         }
         
-    }
+    
 
-    if(!empty($errors)){
+/*     if(!empty($errors)){
         ?>
         <div class="alert alert-danger text-light">
             <?php foreach($errors as $error){
@@ -30,7 +48,8 @@ if(isset($_POST['formcomments'])){
             ?>
         </div>
     <?php
-    }else{
+    } */
+    else{
 
         //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
         //$date = date('d/m/Y H:i:s');
@@ -39,26 +58,32 @@ if(isset($_POST['formcomments'])){
         $succes =$req->execute(array($name,$prenom,$email,$comment, $_GET['id']));
         
         if($succes){
-            $msgComments = "Commentaire envoyé avec succès.bien jouer, Merci";
+            //$msgComments = "Commentaire envoyé avec succès.bien jouer, Merci";
+            $_SESSION['alert'] = "Commentaire envoyé avec succès.bien jouer, Merci";
+            $_SESSION['alert_code'] = "success";
         }
-        ?>
-        <div class=" alert alert-success"><?= $msgComments ?></div>
-        <?php
     }
 }
 ?>
 
 <form action="" method="POST">
+    <?php
+    if(!isset($_SESSION['email']) || !isset($_SESSION['pseudo'])){?>
     <div class="row">
         <div class="col">
-            <input type="text" class="form-control" name="nom"  placeholder="First name">
+            <input type="text" class="form-control" name="nom"  placeholder="votre nom">
         </div>
         <div class="col">
-            <input type="text" class="form-control" name="prenom"  placeholder="Last name">
+            <input type="text" class="form-control" name="prenom"  placeholder="votre prénom">
         </div>
     </div><br>
     <div class="text-left">
         <input type="email"  class="form-control" name="email" placeholder="votre email svp"><br>
+    </div>
+<?php
+    } ?>
+    
+    <div>
         <textarea type="text" class="form-control" name="comment" placeholder="votre Commentaire" rows ="5"></textarea><br>
         <button type="submit" class="btn btn-primary text-left" name="formcomments">Envoyer mon commentaire</button>
     </div>
@@ -79,14 +104,18 @@ if($res != false){
             <p class="text-justify ml-3"><?= $re->commentaire?></p>
         </div>
            
-        <?php endforeach ?>
+    <?php endforeach ?>
 <?php
 }
 else{
-    $commentaire = 'Aucun
-     Commentaire à été posté... soyez le prémier!';
+    $commentaire = 'Aucun Commentaire à été posté... soyez le prémier!';
     ?>
-    <p class="text-left"><?=$commentaire ?></p>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Attention ! </strong><?=$commentaire ?>.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <?php
 }
 ?>

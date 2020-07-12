@@ -20,33 +20,44 @@ if(pas_password() === 0){
                $extensions = ['.png','.jpg','.jpeg','.gif','.PNG','.JPG','.JPEG','.GIF'];
                $ext = strchr($fichier, '.');
                $destinat = "../images/".$fichier;
-               $errors = [];
+               //$errors = [];
 
                if(empty($password1) || empty($password2) || empty($fichier)){
-                   $errors['empty'] = "Tous les champs doivent etre remplis svp";
+                   //$errors['empty'] = "Tous les champs doivent etre remplis svp";
+                   $_SESSION['alert'] = "Tous les champs doivent etre remplis svp";
+                   $_SESSION['alert_code'] = "error";
                }
 
                elseif($password2 != $password1){
-                   $errors['different'] = "Les deux mots de passe doivent etre identique. Merci";
+                   //$errors['different'] = "Les deux mots de passe doivent etre identique. Merci";
+                   $_SESSION['alert'] = "Les deux mots de passe doivent etre identique. Merci";
+                   $_SESSION['alert_code'] = "error";
                }
                elseif($fichierErr != 0){
-                $errors['error'] = "Echec du chargement du fichier; Réessayer. Merci";
+                //$errors['error'] = "Echec du chargement du fichier; Réessayer. Merci";
+                $_SESSION['alert'] = "Echec du chargement du fichier; Réessayer. Merci";
+                $_SESSION['alert_code'] = "error";
                }
                elseif($fichierSize > 2000000){
-                $errors['size'] = "Le fichier ne doit pas depasser la taille de 2 Mo. Merci";
+                //$errors['size'] = "Le fichier ne doit pas depasser la taille de 2 Mo. Merci";
+                $_SESSION['alert'] = "Le fichier ne doit pas depasser la taille de 2 Mo. Merci";
+                $_SESSION['alert_code'] = "error";
                }
                elseif(!in_array($ext,$extensions)){
-                $errors['type'] = "Le type du fichier n'est pas autorisé. Merci";
+               //$errors['type'] = "Le type du fichier n'est pas autorisé. Merci";
+               $_SESSION['alert'] = "Le type du fichier n'est pas autorisé. Merci";
+               $_SESSION['alert_code'] = "error";
                }
 
-               if(!empty($errors)){
+/*                if(!empty($errors)){
                    foreach($errors as $error){
                        ?>
                        <div class="alert alert-danger"><?=$error ?></div>
                        <?php
                    }
 
-               }else{
+               } */
+               else{
 
                 //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
                 move_uploaded_file($fichierTmp,$destinat);

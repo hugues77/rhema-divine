@@ -4,15 +4,19 @@ if(isset($_POST['submit'])){
     $email = htmlspecialchars(trim($_POST['pseudo']));
     $pseudo = htmlspecialchars(trim($_POST['pseudo']));
     $code = htmlspecialchars(trim($_POST['code']));
-    $errors = [];
+    //$errors = [];
     if(empty($email) || empty($code)){
-        $errors['empty'] = "Tous champs doivent etre remplis. Merci";
+        //$errors['empty'] = "Tous champs doivent etre remplis. Merci";
+        $_SESSION['alert'] = "Tous champs doivent etre remplis. Merci";
+        $_SESSION['alert_code'] = "error";
     }
-    if(!verif($pseudo,$code,$email)){
-        $errors['verif'] = "Les informations ne sont pas exactes, vérifier";
+    elseif(!verif($pseudo,$code,$email)){
+        //$errors['verif'] = "Les informations ne sont pas exactes, vérifier";
+        $_SESSION['alert'] = "Les informations ne sont pas exactes, vérifier";
+        $_SESSION['alert_code'] = "error";
     }
 
-    if(!empty($errors)){
+/*     if(!empty($errors)){
         foreach($errors as $error){
             ?>
             <div class="row">
@@ -22,7 +26,8 @@ if(isset($_POST['submit'])){
             </div>
         <?php
         }
-    }else{
+    } */
+    else{
         //mise à jour de token par zero
         $_SESSION['email'] = $email;
         $_SESSION['pseudo'] = $pseudo;
@@ -37,7 +42,12 @@ if(isset($_POST['submit'])){
     <div class="row">
         <div class="col-md-6 offset-3">
             <form action="" method="POST" class="form-group bg-dark p-5 mt-5 rounded text-light">
-            <div class="alert alert-danger">Un email vient de vous etre envoyé par mail, consulter puis valider votre compte</div>          
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Félicitation!</strong> Un email vient de vous etre envoyé par mail, consulter puis valider votre compte.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>          
                 <h3 class="mt-2 mb-2">Confirmer votre email</h3>
                             
                     <div class="mt-2">

@@ -33,11 +33,16 @@
         // if(!array_key_exists('categorie',$_POST) || isset($categorie[$_POST['categorie']])){
         //     $errors['handy'] = "La catégorie seléctionnés n'existe pas ";
         // }
+
         //---------------------------------
         //verifier si les champs sont vide
         //-------------------------------------
         if(empty($titre) || empty($description) || empty($url) || empty($auteur) || $categ ===""){
             $errors['empty'] = "veuillez remplir tous les champs ; merci";
+        }
+
+        if(verif_Url_youtube($url)){
+            $errors['empty'] = "Cet article a été déjà publier ; merci d'en publier un autre ";
         }
           //-------------------------------------------------
          //uploader image dans la base
@@ -60,13 +65,15 @@
             } 
 
             if(!empty($errors)){ 
-                    session_start();
+                    //session_start();
                     $_SESSION['inputs'] = $_POST;
             
         
                     foreach($errors as $error){
+                        $_SESSION['alert'] = $error;
+                        $_SESSION['alert_code'] = "error";
                          ?>
-                        <div class=" mt-1 alert alert-danger"><?=$error?><br></div> 
+                        <!-- <div class=" mt-1 alert alert-danger"><br></div>  -->
                      <?php
                     }
                 //fin code pour enregistrer article dans la bdd
@@ -143,13 +150,17 @@
                  //afficher les erreurs en haut
        
                  if($msg){ 
+                    $_SESSION['alert'] = $msg ;
+                    $_SESSION['alert_code'] = "success";
                     ?>
-                    <div class="mt-1 alert alert-success"><?= $msg ?></div>
+                    <!-- <div class="mt-1 alert alert-success"></div> -->
                     <?php
                 }
                 if($erreur){
+                    $_SESSION['alert'] = $erreur ;
+                    $_SESSION['alert_code'] = "error";
                     ?>
-                    <div class="mt-1 alert alert-danger"><?= $erreur ?></div>
+                   <!--  <div class="mt-1 alert alert-danger"></div> -->
                     <?php
 
                 }

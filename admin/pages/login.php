@@ -14,22 +14,26 @@ if(isset($_SESSION['admin'])){
 if(isset($_POST['submit'])){
     $email = htmlspecialchars(trim($_POST['email']));
     $password = htmlspecialchars(trim($_POST['password']));
-    $errors = [];
+    //$errors = [];
 
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-        $errors['email'] = "L'adresse mail est invalide. Vérifier svp";
+        //$errors['email'] = "L'adresse mail est invalide. Vérifier svp";
+        $_SESSION['alert'] = "L'adresse mail est invalide. Vérifier svp";
+        $_SESSION['alert_code'] = "error";
     }
-
-
-    if(empty($email) || empty($password)){
-        $errors['empty'] = "Renseigner les bonnes valeurs pour vous connectés; Merci";
+    elseif(empty($email) || empty($password)){
+        //$errors['empty'] = "Renseigner les bonnes valeurs pour vous connectés; Merci";
+        $_SESSION['alert'] = "Renseigner les bonnes valeurs pour vous connectés; Merci";
+        $_SESSION['alert_code'] = "error";
 
     }else if(is_admin($email,$password) == 0){
-        $errors['exist'] = "Cet administrateur n'existe pas. Merci";
+        //$errors['exist'] = "Cet administrateur n'existe pas. Merci";
+        $_SESSION['alert'] = "Cet administrateur n'existe pas. Merci";
+        $_SESSION['alert_code'] = "error";
     }
 
     
-    if(!empty($errors)){
+/*     if(!empty($errors)){
         //$_SESSION['admin'] = $_POST['email'];
     ?>
     <div class="row">
@@ -40,7 +44,8 @@ if(isset($_POST['submit'])){
             } ?>
         </div>
     </div>
-    <?php }else{
+    <?php } */
+    else{
         $_SESSION['admin'] = $email;
         header("Location:index.php?page=dashboard");
         ?>

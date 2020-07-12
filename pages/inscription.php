@@ -21,20 +21,31 @@
                 $age_naissance = date('Y',strtotime($naissance));
                 $age_user = ($aujourdhui)-($age_naissance);
                 $token = token($nom);
-               $errors = [];
+               //$errors = [];
                if(empty($nom) || empty($prenom) || empty($sexe) || empty($pseudo) || empty($email)|| empty($naissance) || empty($religion)){
-                   $errors['empty'] = "Merci de renseigner tous les champs svp";
+                   //$errors['empty'] = "Merci de renseigner tous les champs svp";
+                   $_SESSION['alert'] = "Merci de renseigner tous les champs svp";
+                   $_SESSION['alert_code'] = "error";
                }
-               if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-                   $errors['email'] = "L'adresse email renseigner n'est pas valable";
+               elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+                  // $errors['email'] = "L'adresse email renseigner n'est pas valable";
+                  $_SESSION['alert'] = "L'adresse email renseigner n'est pas valable";
+                  $_SESSION['alert_code'] = "error";
                }
-               if($age_user < 16){
-                   $errors['date'] = "Veuillez à utiliser votre vraie date de naissance; Vous devriez avoir 16 ans ou plus pour s'inscrire, Merci";
+               elseif($age_user < 16){
+                  // $errors['date'] = "Veuillez à utiliser votre vraie date de naissance; Vous devriez avoir 16 ans ou plus pour s'inscrire, Merci";
+                  $_SESSION['alert'] = "Veuillez à utiliser votre vraie date de naissance; Vous devriez avoir 16 ans ou plus pour s'inscrire, Merci";
+                  $_SESSION['alert_code'] = "error";
                }
-               if(user_exist($email,$pseudo)){
-                   $errors['user'] = "L'adresse e-mail ou Pseudo déjà assignée, Merci d'en trouver un autre";
+               elseif(user_exist($email,$pseudo)){
+                   //$errors['user'] = "L'adresse e-mail ou Pseudo déjà assignée, Merci d'en trouver un autre";
+                   $_SESSION['alert'] = "L'adresse e-mail ou Pseudo déjà assigné(e), Merci d'en trouver un(e) autre";
+                  $_SESSION['alert_code'] = "error";
                }
-               if(!empty($errors)){
+
+               //j'enleve le l'affichage des erreurs sous forme des alert
+               //j'introduis le systeme de sweetalert du JS
+             /*   if(!empty($errors)){
                    foreach($errors as $error){
                        ?>
                        <div class="row">
@@ -42,7 +53,8 @@
                        </div>
                        <?php
                    }
-               }else{
+               } */
+               else{
                    $sql = "INSERT INTO membre(nom,prenom,pseudo,sexe,email,date_naissance,religion,token) VALUES (?,?,?,?,?,?,?,?)";
                    $req = $connexion->prepare($sql);
                    $result = $req->execute(array($nom,$prenom,$pseudo,$sexe,$email,$naissance,$religion,$token));
@@ -58,8 +70,8 @@
         <div class="col-md-8  offset-2">
             <div class="card mb-3">
                 <div class="row no-gutters">
-                    <div class="col-md-4 bg-danger">
-
+                    <div class="col-md-4">
+                        <img src="images/tchat/welcome.png" width="300px" height="700px" alt="inscription sur rhema-divine">
                     </div>
                     <div class="col-md-8 bg-dark">
                         <form action="" method="POST" class="form-group  p-5  text-light">
@@ -118,3 +130,4 @@
         </div> -->
     </div>
 </div>
+

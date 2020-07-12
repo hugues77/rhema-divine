@@ -16,28 +16,37 @@
             //---------------------------------------------
             $extensions = ['.png','.jpg','.jpeg','.gif','.PNG','.JPG','.JPEG','.GIF'];
             $ext = strchr($fichier, '.');
-            $errors = [];
+            //$errors = [];
             if(empty($titre) || empty($fichier)){
-                $errors ['empty'] = "Tous les champs doivent etre remplis.merci ";
+               // $errors ['empty'] = "Tous les champs doivent etre remplis.merci ";
+               $_SESSION['alert'] = "Tous les champs doivent etre remplis.merci";
+               $_SESSION['alert_code'] = "error";
             }
             elseif($fichierError != 0){
-                $errors ['error'] = "Echec d'envoie du fichier dans le serveur. Réessayer";
+                //$errors ['error'] = "Echec d'envoie du fichier dans le serveur. Réessayer";
+                $_SESSION['alert'] = "Echec d'envoie du fichier dans le serveur. Réessayer";
+                $_SESSION['alert_code'] = "error";
             }
             elseif($fichierSize > 2000000){
-                $errors ['size'] = "La taille du fichier est trop grande, compressez le svp";
+                //$errors ['size'] = "La taille du fichier est trop grande, compressez le svp";
+                $_SESSION['alert'] = "La taille du fichier est trop grande, compressez le svp";
+                $_SESSION['alert_code'] = "error";
             }
 
             else if(!in_array($ext,$extensions)){
-                $errors ['extension'] = "L'extension du fichier n'est pas autorisé; merci de le changer";
+                //$errors ['extension'] = "L'extension du fichier n'est pas autorisé; merci de le changer";
+                $_SESSION['alert'] = "L'extension du fichier n'est pas autorisé; merci de le changer";
+                $_SESSION['alert_code'] = "error";
             }
 
-            if(!empty($errors)){
+            /* if(!empty($errors)){
                 foreach($errors as $error){
                     ?>
                     <div class="alert alert-danger"><?=$error ?></div>
                     <?php
                 }
-            }else{
+            } */
+            else{
                 $succes = "";
                  move_uploaded_file($fichierTmp,$destination);
                 //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
@@ -46,8 +55,11 @@
                 $succes = $req->execute(array($titre,$fichier));
                 if($succes){
                     ?>
-                    <div class="alert alert-success">Le fichier est enregistrer avec succès. Merci</div>
+                    <!-- <div class="alert alert-success">Le fichier est enregistrer avec succès. Merci</div> -->
+                    
                     <?php
+                        $_SESSION['alert'] = "Le fichier est enregistrer avec succès. Bravo!";
+                        $_SESSION['alert_code'] = "success";
                 }
             }
             

@@ -15,10 +15,7 @@ if(isset($_SESSION['admin'])){
                 if(isset($_POST['submit'])){
                     $email = htmlspecialchars(trim($_POST['mail']));
                     $token = htmlspecialchars(trim($_POST['pswd']));
-                    $errors = [];
-                    if(empty($email) || empty($token)){
-                        $errors['empty'] = "Tous les champs doivent etre remplis";
-                    }
+                    //$errors = [];
                     //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
                     $a = [
                         'email'   => $email,
@@ -29,17 +26,25 @@ if(isset($_SESSION['admin'])){
                     $req->execute($a);
                     $result = $req->rowCount($sql);
 
-                    if(!$result){
-                        $errors['exist'] = "Ce Modérateur n'existe pas";
+                    if(empty($email) || empty($token)){
+                        //$errors['empty'] = "Tous les champs doivent etre remplis";
+                        $_SESSION['alert'] = "Tous les champs doivent etre remplis";
+                        $_SESSION['alert_code'] = "error";
+                    }
+                    elseif(!$result){
+                       // $errors['exist'] = "Ce Modérateur n'existe pas";
+                       $_SESSION['alert'] = "Ce Modérateur n'existe pas";
+                       $_SESSION['alert_code'] = "error";
                     }
 
-                    if(!empty($errors)){
+/*                     if(!empty($errors)){
                         foreach($errors as $error){
                             ?>
                             <div class="alert alert-danger"><?=$error?></div>
                             <?php
                         }
-                    }else{
+                    } */
+                    else{
                         $_SESSION['admin'] = $email;
                         $z = [
                             'email'   => $email,
