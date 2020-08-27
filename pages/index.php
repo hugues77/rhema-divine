@@ -385,25 +385,14 @@
            
         <div class="col-xs-12 col-sm-12 col-lg-8 col-md-8 ">
           <h2 class="text-danger text-center">Prédications Direct</h2><hr class="blanc"/>
+          <!--Publicité -->
           <div class="card mb-3">
             <div class="row no-gutters">
-              <img src="" alt="">
+              <img src="images/pub_rhema.jpg" width="850px" height="200px" alt="publicité chez rhema divine">
             </div>
           </div>
           <div class="row mt-4 text-dark">
             <div class="col-xs-12 col-sm-12 col-lg-7  col-md-7 ">
-            <div class="">
-                <div class="card">
-                  <img src="images/tiger.jpg" height="150px" width="" alt="">
-                </div>
-                <h5 class="text-justify mt-2">This ow as ontentr.</h5>
-              </div>
-              <div class="mt-3">
-                <div class="card">
-                  <img src="images/Ev handy1.jpg" height="150px" alt="">
-                </div>
-                <h5 class="text-justify mt-2">This ow as ontentr.</h5>
-              </div>
               <div class="mt-3">
                 <div class="card">
                   <img src="images/lolo.jpg" height="150px" alt="">
@@ -416,16 +405,15 @@
                     <div class="text-right"><a href="" class="mt-2 btn btn-outline-danger "><i class="fas fa-arrow-right  mr-2"></i>Lire</a></div>
                   </div>
                 </div>
-              </div>
-              
+              </div>  
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-5  col-md-5 ">
             <h2 class="text-danger text-center">Tango ya Makusa</h2><hr class="rouge"/>
             <div class="card text-dark">
              <a href="index.php?page=publication&id=<?= $article->id ?>"><img src="images/<?=$article->image ?>" alt="<?=$article->titre ?>" class="card-img-top" width="630px" height="200px"/></a>
               <div class="card-body">
-                <h4 class="card-title "><?= $article->titre?> par <?=$article->auteur ?></h4>
-                <p class="card-text"><?= substr(nl2br($article->description),0,100); ?>...</p>
+                <h4 class="card-title "><?= ucfirst($article->titre)?> par <?=$article->auteur ?></h4>
+                <p class="card-text"><?= ucfirst(substr(nl2br($article->description),0,100)); ?>...</p>
                 <div class="row">
                   <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5">
                     <a href="index.php?page=publication&id=<?= $article->id ?>" class="btn btn-primary ">Voir la video</a>
@@ -444,14 +432,11 @@
           </div>       
         </div>
         <!--Fin section Prédications-->
-    <!-- debut section Emissions -->
-
-        
-        
+    <!-- debut section Emissions -->    
     </div>
   </div>
-  </section>
-  <br/>
+</section>
+  
               
 
 
