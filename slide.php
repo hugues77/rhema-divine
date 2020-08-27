@@ -6,7 +6,7 @@ require_once 'pages/connection.php';
 ?>
 
 <h2 class="text-dark text-left">Faire Un Don</h2><hr class="rouge"/>
-            <a href="https://www.paypal.com/donate/?token=tlFbGZwQ25aT2y0X1JYrA9zCGFJd25LrTYNI6rhdyZIWEU8IhJZrldi9E4kXePsWYOqIQ0&country.x=FR&locale.x=FR"><img class="text-center taille_btn_don_md taille_btn_don_sm taille_btn_don_xs" src="images/logo-paypal.jpg" /></a>
+            <a href="https://www.paypal.com/donate/?token=wiXcjja51UczFWpIioDqXf1-RgefR_A4f5qberOhWaJ_UuPbFY12llgLsU3Fy2RnXoYPVG&country.x=FR&locale.x=FR"><img class="text-center taille_btn_don_md taille_btn_don_sm taille_btn_don_xs" src="images/logo-paypal.jpg" /></a>
             <br/>
 <h2 class="text-dark text-left">Vidéos Récentes</h2><hr class="bleu"/>
 <section class="text-dark">
