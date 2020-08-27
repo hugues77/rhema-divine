@@ -20,7 +20,6 @@
 
                     if(empty($nom) || empty($pswd)){
                         $errors['empty'] = "Vous devez remplir tous les champs svp";
-                        
                     }
 
                     elseif(!$rest){

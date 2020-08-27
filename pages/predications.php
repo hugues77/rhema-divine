@@ -12,6 +12,7 @@
               <?php
                 if(isset($_POST['btn_pred'])){
                   $titre = htmlentities(trim($_POST['theme_pred']));
+                  $data2 ="";
                   if(empty($titre)){
                     $_SESSION['alert'] = "veuiller entrer le mot clé pour votre recherche svp";
                     $_SESSION['alert_code'] = "error";
@@ -21,7 +22,7 @@
                     $rqt ="SELECT * FROM article WHERE categorie_article='Predication' AND CONCAT(auteur,titre) LIKE '%$titre%' ";
                     $req_run = $connexion->query($rqt);
                     $reslt = $req_run->fetchAll(PDO::FETCH_OBJ);
-                    $data2 = $req_run->rowCount($rqt);
+                    $data = $req_run->rowCount($rqt);
 
                     //requete pour les nombre de recherche
                     $rqtt ="SELECT COUNT(*) as nb_res FROM article WHERE categorie_article='Predication' AND CONCAT(auteur,titre) LIKE '%$titre%' ";
@@ -30,7 +31,7 @@
                     $nb_ligne = $nb_ligne['nb_res'];
                   
 
-                    if($data2 >0){ ?>
+                    if($data > 0){ ?>
                       <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Félicitation!</strong> Nous avons <b><?=$nb_ligne?></b> résultats trouvés pour <?= $titre?>.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -44,6 +45,7 @@
                     }
                   }
                 }
+
               ?>
               <div class="input-group mb-2"> 
                     <input type="text" name="theme_pred" class="form-control" id="inlineFormInputGroup" placeholder="Votre recherche">
@@ -58,7 +60,7 @@
         <div class="container ">
           <div class="row">
           <?php
-              if($data2 > 0){
+              if($data > 0){
               foreach($reslt as $r):?>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
                   <div class="card text-dark">

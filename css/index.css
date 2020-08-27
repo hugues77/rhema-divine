@@ -146,6 +146,19 @@
      border-radius: 50px;
      background-color: white;
  }
+ 
+ .connexionlogin {
+     margin-top: 130px;
+     margin-left: 50px;
+     margin-right: 50px;
+ }
+ 
+ .connectdata {
+     /*   background-image: url(../images/conect1.jpg);
+     background-repeat: no-repeat;
+     height: 200px;
+     width: 1200px; */
+ }
  /*Les Media-query pour tous les sites */
  /* // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap */

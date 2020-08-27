@@ -2,9 +2,11 @@
 
 function is_admin($email,$password){
 
-
-        //verifier mail et mot de passe du Admin
-        //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+/**
+ *  //verifier mail et mot de passe du Admin
+ * $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+       
+ */
         global $connexion;
         $array = [
             'email' => $email,

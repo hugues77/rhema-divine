@@ -23,6 +23,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/index.css" type="text/css"/>
     <link rel="stylesheet" href="css/tchat.css" type="text/css"/>
     <script src="https://kit.fontawesome.com/bdf8dcd65d.js"></script><!-- Ici j'ai inserer lekit fontAwesome -->
@@ -46,13 +47,14 @@
                         
                         //On affiche proto profil et pseudo de l'utilisateur connectés
                          if(isset($_SESSION['email']) || isset($_SESSION['pseudo'])){
-                            foreach($res as $profil){
-                                $_SESSION['nom'] = $profil->nom;
-                                $_SESSION['prenom'] =$profil->prenom;
-                               echo ' <span class="myPopover" id="action_topbar_btn" data-toggle="popover" data-placement="right" title="Vous etes connectés" data-trigger="hover"><img class="rounded-circle user_profil ml-3" src="images/tchat/'.$profil->image.'"/>'.' '.$profil->pseudo.'</span>';
+                             foreach($res as $re)
+                             {
+                                 $_SESSION['image'] = $re->image;
+                                 $_SESSION['pseudo'] = $re->pseudo;
+                            echo ' <span class="myPopover" id="action_topbar_btn" data-toggle="popover" data-placement="right" title="Vous etes connectés" data-trigger="hover"><img class="rounded-circle user_profil ml-3" src="images/tchat/'.$_SESSION['image'].'"/>'.' '.substr(nl2br($_SESSION['pseudo']),0,7).'</span>';
                             }
                          } else{
-                            echo '<span id="html"><a href="#exampleModal"  class="" data-toggle="modal" data-backdrop="static" data-target="#exampleModal" ><div class="btn btn-outline-danger ml-2">Se Connecter</div></a></span> ' ; 
+                            echo '<span id="html"><a href="index.php?page=login"><div class="btn btn-outline-danger ml-2">Se Connecter</div></a></span> ' ; 
                          } 
                         ?> 
                     </div>
@@ -103,51 +105,3 @@
     </nav>
 </div> 
   
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Poursuivre avec Facebook <img src="images/facebook.png" width="7%" alt=""></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="">
-            <div class=" mt-2 mb-2">
-                <div class="mt-2 text-center">
-                    <img src="images/user-female.png" alt="Modérateur" class="text-center " width="160px">
-                </div>
-                <h4 class="text-center mt-2">Se connecter</h4>
-                <form action="index.php?page=conn_members" method="POST" class="form-group">
-                    <input type="text"  class="form-control" id="email" name="email" placeholder="votre e-mail ou pseudo">
-                    <input type="password"  class="form-control mt-2"  id="password" name="password" placeholder="votre Mot de passe">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 text-right">
-                            <span class=""><a href="">Mot de passe oublié</a></span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="submit" name="submit" id="connexionMembre" class="btn btn-primary mt-2 btn-block ">connexion</button>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="index.php?page=inscription" type="submit" name="submit" class="btn btn-primary mt-2 btn-block ">créer un compte</a>
-                        </div>
-                    </div>   
-                </form>
-            </div>   
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-   

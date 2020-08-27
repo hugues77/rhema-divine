@@ -44,10 +44,10 @@
         if(verif_Url_youtube($url)){
             $errors['empty'] = "Cet article a été déjà publier ; merci d'en publier un autre ";
         }
-          //-------------------------------------------------
-         //uploader image dans la base
-       //verifier la taille de l'image ainsi que le nom
-     //-------------------------------------------------------
+          /**
+           * /uploader image dans la base
+           * verifier la taille de l'image ainsi que le nom
+           */
 
             if(!empty($_FILES['fichier']['name']) || !empty($nomFichier)){ 
                 
