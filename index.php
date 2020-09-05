@@ -1,7 +1,7 @@
 <?php
    session_start();
-    //include 'functions/main-functions.php';
-    include 'functions/main.php';
+    include 'functions/main-functions.php';
+    //include 'functions/main.php';
     
     $pages = scandir('pages/');
     if(isset($_GET['page']) && !empty($_GET['page'])){

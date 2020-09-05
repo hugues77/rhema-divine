@@ -36,8 +36,8 @@
 <div class="fixed-top">
     <div class="container-fluid phone_cache">
         <div class="row bg-light">
-            <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 bg-light"></div>
-            <div class="col-md-6 heure text-light">
+            <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5 bg-light"></div>
+            <div class="col-md-7 col-sm-7 col-lg-7 col-md-7 heure text-light">
                     <div class="ml-2"> <a href="https://www.facebook.com/rhema.divine/"><img src="images/facebook.png" width="5%"/></a> <a href="https://twitter.com/HEvangeliste"><img src="images/twitter.png" width="5%"/></a> <a href="https://www.youtube.com/c/RhemaDivine"><img src="images/youtube.png" width="5%"/></a> <a href="https://www.instagram.com/handyevangeliste/"><img src="images/instagram.png" width="5%"/></a> | Nous sommes, 
                         <?php  
                         

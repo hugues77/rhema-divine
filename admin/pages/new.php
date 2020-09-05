@@ -36,7 +36,7 @@ if(isset($_SESSION['admin'])){
                        $_SESSION['alert'] = "Ce Modérateur n'existe pas";
                        $_SESSION['alert_code'] = "error";
                     }
-
+ 
 /*                     if(!empty($errors)){
                         foreach($errors as $error){
                             ?>

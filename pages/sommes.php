@@ -19,7 +19,7 @@
           
         </div>
       </section>
-      <section class="container">
+    <section class="container">
         <div class="row text-justify">
             <div class="mt-1 col-xs-12 col-lg-6 col-sm-12 col-md-6">
                 <p> <div class="mt-1 text-center text-primary"><i class="fas fa-users-cog fa-3x"></i></div><br>Il était une fois à Metz aux environs des années 2015,Ce site est l'initiative de votre Serviteur Handy, Ancien étudiant de l'université de Kinshasa, qui   est  actuellement en France entrain de servir Jésus-christ son sauveur; ensemble avec son Pasteur   Paul  Mungu,frère Boris et le frère Freddy qui est notre excellent réalisateur.
@@ -35,83 +35,127 @@
 
                 </div>
         </div>
-      </section>
+    </section>
       
       <!-- inserer formulaire here + Maps -->
- <div class="container-fluid bg-dark">    
-    <section class="container py-3 ">
+    <div class="container-fluid bg-dark">    
+        <section class="container py-3 ">
             <h1 class="jumbotron-heading text-center"></h1>
-            <div class="row text-justify">
-                <div class="col-xs-12 col-sm-12 col-lg-5 col-md-5">
-                    <!-- Material form contact -->
-    <div class="card">
+                <!-- traitement des données en php-->
+                <?php
+                    if (isset($_POST['submit'])) {
+                        $nom = htmlspecialchars(trim($_POST['nom']));
+                        $email = htmlspecialchars(trim($_POST['email']));
+                        $sujet = $_POST['sujet'];
+                        $message = htmlspecialchars(trim($_POST['message']));
+                        $moi = isset($_POST['send']) ? '1' : '';
+                        $destinateur = "afalang.2@gmail.com";
+                        $header="MIME-Version:1.0\r\n";
+                        $header.='From:"http://rhema-divine.com"<contact@rhema-divine.com>'."\n";
+                        $header.='Content-Type:text/html; charset="utf-8"'."\n";
+                        $header.='Content-Transfert-Encoding:8bit';
+                        
+                        $corps_message = '
+                            <html>
+                                <body>
+                                    <div align="justify">
+                                        <img src="http://rhema-divine.com/images/rhema_gen.JPG" width="800px" height="200px"><br>
+                                        <u>Nom de l\'expéditeur: </u> '.$nom.'<br>
+                                        <u>Adresse Mail: </u> '.$email.'<hr>
+                            
+                            
+                                    '.nl2br($message).'
+                                    </div>
+                                </body>
+                            </html>
+                        
+                        ';
+                        if (empty($nom) || empty($email) || empty($sujet) || empty($message)) {
+                            $_SESSION['alert'] = "vous devrez remplir tous les champs svp";
+                            $_SESSION['alert_code'] = "error";
+                 
+                        }else {
+                            # code envoie mail...
+                            Mail($destinateur, $sujet,$corps_message,$header);
+                            $_SESSION['alert'] = "votre message a été envoyé avec succès";
+                            $_SESSION['alert_code'] = "success";
+                            if ($moi === 1) {
+                                # code envoie mail à moi meme aussi...
+                                Mail($email, $sujet,$corps_message,$header);
+                            }
+                        }
+                    
+                    }
+                ?>
+                <div class="row text-justify">
+                    <div class="col-xs-12 col-sm-12 col-lg-5 col-md-5">
+                        <!-- Material form contact -->
+                        <div class="card">
 
-    <h5 class="card-header info-color white-text text-center py-4">
-        <strong>Contactez-nous</strong>
-    </h5>
+                            <h5 class="card-header info-color white-text text-center py-4">
+                                <strong>Contactez-nous</strong>
+                            </h5>
 
-    <!--Card content-->
-    <div class="card-body px-lg-5 pt-0">
+                            <!--Card content-->
+                            <div class="card-body px-lg-5 pt-0">
 
-        <!-- Form -->
-        <form class="text-center" style="color: #757575;" action="" method="POST">
-            <?php
-            //verification si le bouton est soumis
-            ?>
-            <!-- Name -->
-            <div class="form-group mt-3">
-                <label for="materialContactFormName">Nom complet</label>
-                <input type="text" id="materialContactFormName" name="nom" class="form-control">
-                
-            </div>
+                                <!-- Form -->
+                                <form class="text-center" style="color: #757575;" action="" method="POST">
+                                    <!-- Name -->
+                                    <div class="form-group mt-3">
+                                        <label for="materialContactFormName">Nom complet</label>
+                                        <input type="text" id="materialContactFormName" name="nom" class="form-control">
+                                        
+                                    </div>
 
-            <!-- E-mail -->
-            <div class="form-group">
-                <label for="materialContactFormEmail">E-mail</label>
-                <input type="email" id="materialContactFormEmail" name="email" class="form-control">
-                
-            </div>
+                                    <!-- E-mail -->
+                                    <div class="form-group">
+                                        <label for="materialContactFormEmail">E-mail</label>
+                                        <input type="email" id="materialContactFormEmail" name="email" class="form-control">
+                                        
+                                    </div>
 
-            <!-- Subject -->
-            <span>Sujet du Message</span>
-            <select class="custom-select" name="sujet">
-                <option value="" disabled>Chosir une option</option>
-                <option value="1" selected>Demande de prière</option>
-                <option value="2">Question pour une émission</option>
-                <option value="3">Problème de paiement pour don</option>
-                <option value="4">Problème liée à l'informatique</option>
-            </select>
+                                    <!-- Subject -->
+                                    <span>Sujet du Message</span>
+                                    <select class="custom-select" name="sujet">
+                                        <option value="">Chosir une option</option>
+                                        <option value="Demande de prière">Démande de prière</option>
+                                        <option value="Question pour une émission">Question pour une émission</option>
+                                        <option value="Problème liée à l'informatique">Problème liée à l'informatique</option>
+                                        <option value="Autres Problème">Autres</option>
+                                    </select>
 
-            <!--Message-->
-            <div class="form-group">
-                <label for="materialContactFormMessage">Message</label>
-                <textarea id="materialContactFormMessage" class="form-control"  name="message" rows="3"></textarea>
-            </div>
+                                    <!--Message-->
+                                    <div class="form-group">
+                                        <label for="materialContactFormMessage">Message</label>
+                                        <textarea id="materialContactFormMessage" class="form-control"  name="message" rows="3"></textarea>
+                                    </div>
 
-            <!-- Copy -->
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="materialContactFormCopy" name="send">
-                <label class="form-check-label" for="materialContactFormCopy">Envoyez-moi une copie de ce message</label>
-            </div>
+                                    <!-- Copy -->
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="materialContactFormCopy" name="send">
+                                        <label class="form-check-label" for="materialContactFormCopy">Envoyez-moi une copie de ce message</label>
+                                    </div>
 
-            <!-- Send button -->
-            <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="submit" type="submit">Send</button>
+                                    <!-- Send button -->
+                                    <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" name="submit" type="submit">Envoyer</button>
 
-        </form>
-        <!-- Form -->
+                                </form>
+                                <!-- Form -->
 
+                            </div>
+
+                        </div>
+                        <!-- form Maps Adresse -->
+                        </div>
+                            <div class="col-xs-12 col-sm-12 col-md-7">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.6191327259767!2d6.162580414988722!3d49.13186818936674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4794d94d17910c6f%3A0xee30fdc7901bb4c3!2s5%20Rue%20Pierre%20Mouzin%2C%2057050%20Metz!5e0!3m2!1sfr!2sfr!4v1574718789071!5m2!1sfr!2sfr"
+                                width="650" height="506" frameborder="0" style="border-radius:10px" allowfullscreen=""></iframe> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
     </div>
-
-    </div>
-    <!-- Material form contact -->
-    </div>
-        <div class="col-xs-12 col-sm-12 col-md-7">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2610.6191327259767!2d6.162580414988722!3d49.13186818936674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4794d94d17910c6f%3A0xee30fdc7901bb4c3!2s5%20Rue%20Pierre%20Mouzin%2C%2057050%20Metz!5e0!3m2!1sfr!2sfr!4v1574718789071!5m2!1sfr!2sfr"
-                width="650" height="506" frameborder="0" style="border-radius:10px" allowfullscreen=""></iframe> 
-        </div>
-    </div>
-        
-    </section>
- </div>
 
 

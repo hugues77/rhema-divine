@@ -87,8 +87,9 @@
                         <img src="images/tchat/welcome.png" width="300px" height="450px" alt="se connecter sur rhema-divine">
                     </div>
                     <div class="col-md-8 bg-dark">
+                    
                     <form action="" method="POST" class="form-group connexionlogin">
-
+                        <h2 class="text-danger">Identification</h2>
                         <input type="text"  class="form-control "  name="email" id="email" placeholder="votre e-mail ou pseudo">
                         <input type="password"  class="form-control mt-2"  name="password" id="password"  placeholder="votre Mot de passe">
                         <div class="row">
