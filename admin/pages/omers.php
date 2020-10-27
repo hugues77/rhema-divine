@@ -66,15 +66,15 @@
         }
     ?>
     <form action="" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="titre"><h4>Titre du Message</h4></label>
-        <input id="titre" type="text" class="form-control" name="titre">
-    </div>
-    <h4 class="mt-2">Sélectionner le fichier </h4>
-    <input type="file" name="fichier" id="real-file" hidden="hidden ">
-    <button type="button" class="btn btn-outline-warning btn-lg mb-2" id="custom-button"><i class="fas fa-camera mr-2"></i>Choisir un fichier</button>
-    <span class="mb-2" id="custom-text">Aucun fichier sélectionné</span><br>
-    <button class="btn btn-primary rounded btn-lg" type="submit" name="submit">Poster le message</button>
+        <div class="form-group">
+            <label for="titre"><h4>Titre du Message</h4></label>
+            <input id="titre" type="text" class="form-control" name="titre">
+        </div>
+        <h4 class="mt-2">Sélectionner le fichier </h4>
+        <input type="file" name="fichier" id="real-file" hidden="hidden ">
+        <button type="button" class="btn btn-outline-warning btn-lg mb-2" id="custom-button"><i class="fas fa-camera mr-2"></i>Choisir un fichier</button>
+        <span class="mb-2" id="custom-text">Aucun fichier sélectionné</span><br>
+        <button class="btn btn-primary rounded btn-lg" type="submit" name="submit">Poster le message</button>
     </form>
 
 </div>

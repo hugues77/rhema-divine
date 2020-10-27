@@ -38,17 +38,14 @@
 
     
     <!-- corps images PHP -->
-
-
-
-    
+  
     <!-- section //video et presentation videos en 3 colonnes -->
 
     <section class="text-light pl-4 pr-4">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 "><h2 class="text-danger text-center">A la Une</h2><hr class="bleu"/>
-    <!--  section les videos partie gauche -->
+            <!--  section les videos partie gauche -->
             <form action="" method="POST">
               <div class="form-group">
                   <div class="row">
@@ -59,141 +56,143 @@
                               $categorie = $rep->lib_categ ;?>
                           <option value="<?=$categorie ?>"><?=$categorie ?></option>
                           <?php
-                          } ?>
+                          } 
+                          ?>
 
                       </select>
                     </div>
                     <div class="col-xs-3 col-sm-3 col-lg-3 col-md-3">
-                      <input class="btn btn-primary" type="submit" name="search" value="ok">  
+                      <input class="btn btn-primary select_categ" type="submit" name="search" value="ok">  
                     </div>
                  
                   </div>
               </div>
             </form>
-            <?php
-            //var_dump($req1);
-            
-            if(isset($_POST['search'])){
-              $categ = $_POST['categorie'];
-              if($categ ==="Musique"){
-                //affiche categorie Musique ici
-                foreach($req1 as $reqM): ?>
-                <div class="row card-body">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                      <div class="card-deck">
-                        <div class="card">
-                        <a href="index.php?page=publication&id=<?= $reqM->id ?>"><img class="card-img-top" src="images/<?=$reqM->image ?>" width="130px" height="80px"/></a>
-                        </div>
-                      </div> 
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                      <div class="text-center text-dark">
-                      <a href="index.php?page=publication&id=<?= $reqM->id ?>"><h4 class="text-left"><?= ucfirst(substr(nl2br($reqM->titre),0,18))?>...</h4></a>
-                        <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqM->date_publier ))?></small></p>
-                      </div>
-                    </div>
-                </div><hr>
-                <?php endforeach;
-                
-                }elseif(($categ ==="Predication")|| ($categ ==="")){
-                  //affiche categorie prédication ici
-                  foreach($req2 as $reqP): ?>
-                  <div class="row card-body">    
-                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        <div class="card-deck">
-                          <div class="card">
-                          <a href="index.php?page=publication&id=<?= $reqP->id ?>"><img class="card-img-top" src="images/<?=$reqP->image ?>" width="130px" height="80px"/></a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        <div class="text-center text-dark">
-                        <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
-                          <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></p>
-                        </div>
-                      </div>
-                  </div><hr>
-                <?php endforeach;
-                }
-              //categorie Cuisine
+              <?php
+              //var_dump($req1);
               
-              elseif($categ ==="Cuisine"){
-              //affiche categorie Musique ici
-                foreach($req3 as $reqC): ?>
-                  <div class="row card-body">          
-                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        <div class="card-deck">
-                          <div class="card">
-                            <a href="index.php?page=publication&id=<?= $reqC->id ?>"><img class="card-img-top" src="images/<?=$reqC->image ?>" width="130px" height="80px"/></a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        <div class="text-center text-dark">
-                          <a href="index.php?page=publication&id=<?= $reqC->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqC->titre),0,20))?> ...</h4></a>
-                          <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqC->date_publier ))?></small></p>
-                        </div>
-                      </div>
-                  </div><hr>
-                <?php endforeach;
-
-                //categorie les deux omers
-
-                  }else{
+              if(isset($_POST['search'])){
+                $categ = $_POST['categorie'];
+                if($categ ==="Musique"){
                   //affiche categorie Musique ici
-                  foreach($req4 as $reqD): ?>
-                  <div class="row card-body">   
-                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                  foreach($req1 as $reqM): ?>
+                  <div class="row card-body">
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="card-deck">
                           <div class="card">
-                            <a href="index.php?page=publication&id=<?= $reqD->id ?>"><img class="card-img-top" src="images/<?=$reqD->image ?>" width="130px" height="80px"/></a>
+                          <a href="index.php?page=publication&id=<?= $reqM->id ?>"><img class="card-img-top" src="images/<?=$reqM->image ?>" width="130px" height="80px"/></a>
                           </div>
-                        </div>
+                        </div> 
                       </div>
-                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="text-center text-dark">
-                          <a href="index.php?page=publication&id=<?= $reqD->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqD->titre),0,20))?> ...</h4></a>
-                          <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqD->date_publier ))?></small></p>
+                        <a href="index.php?page=publication&id=<?= $reqM->id ?>"><h4 class="text-left"><?= ucfirst(substr(nl2br($reqM->titre),0,18))?>...</h4></a>
+                          <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqM->date_publier ))?></small></p>
                         </div>
                       </div>
                   </div><hr>
-                <?php endforeach;
+                  <?php endforeach;
+                  
+                  }elseif(($categ ==="Predication")|| ($categ ==="")){
+                    //affiche categorie prédication ici
+                    foreach($req2 as $reqP): ?>
+                    <div class="row card-body">    
+                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                          <div class="card-deck">
+                            <div class="card">
+                            <a href="index.php?page=publication&id=<?= $reqP->id ?>"><img class="card-img-top" src="images/<?=$reqP->image ?>" width="130px" height="80px"/></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                          <div class="text-center text-dark">
+                          <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
+                            <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></p>
+                          </div>
+                        </div>
+                    </div><hr>
+                  <?php endforeach;
+                  }
+                //categorie Cuisine
+                
+                elseif($categ ==="Cuisine"){
+                //affiche categorie Musique ici
+                  foreach($req3 as $reqC): ?>
+                    <div class="row card-body">          
+                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                          <div class="card-deck">
+                            <div class="card">
+                              <a href="index.php?page=publication&id=<?= $reqC->id ?>"><img class="card-img-top" src="images/<?=$reqC->image ?>" width="130px" height="80px"/></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                          <div class="text-center text-dark">
+                            <a href="index.php?page=publication&id=<?= $reqC->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqC->titre),0,20))?> ...</h4></a>
+                            <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqC->date_publier ))?></small></p>
+                          </div>
+                        </div>
+                    </div><hr>
+                  <?php endforeach;
+
+                  //categorie les deux omers
+
+                    }else{
+                    //affiche categorie Musique ici
+                    foreach($req4 as $reqD): ?>
+                    <div class="row card-body">   
+                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                          <div class="card-deck">
+                            <div class="card">
+                              <a href="index.php?page=publication&id=<?= $reqD->id ?>"><img class="card-img-top" src="images/<?=$reqD->image ?>" width="130px" height="80px"/></a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                          <div class="text-center text-dark">
+                            <a href="index.php?page=publication&id=<?= $reqD->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqD->titre),0,20))?> ...</h4></a>
+                            <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqD->date_publier ))?></small></p>
+                          </div>
+                        </div>
+                    </div><hr>
+                  <?php endforeach;
+                  }
                 }
-              }
-            //on affiche les deux omers avant le selection du categorie
-            ?>
+              //on affiche les deux omers avant le selection du categorie
+              ?>
             <div class="card">
               <img src="images_omers/<?=$omers->image?>"  alt="<?=$omers->nom?>" class="card-img-top" width="280px" />
             </div>
             <hr/>
             <h3 class="text-dark">Ne rien rater ! </h3><hr class="rouge" />
-            <?php
-            //Affiche tous les articles aleatoirement et une fois la rechaerche est faite lui est
-            //doit etre cacher pour la bonne mise en forme
-            
-            foreach($rgA as $reqP): ?>
-              <div class="row card-body">    
-                  <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                    <div class="card-deck">
-                      <div class="card">
-                        <a href="index.php?page=publication&id=<?= $reqP->id ?>"><img class="card-img-top" src="images/<?=$reqP->image ?>" width="130px" height="80px"/></a>
+            <div class="ferme_select">
+              <?php
+              //Affiche tous les articles aleatoirement et une fois la rechaerche est faite lui est
+              //doit etre cacher pour la bonne mise en forme
+              
+                foreach($rgA as $reqP): ?>
+                  <div class="row card-body">    
+                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        <div class="card-deck">
+                          <div class="card">
+                            <a href="index.php?page=publication&id=<?= $reqP->id ?>"><img class="card-img-top" src="images/<?=$reqP->image ?>" width="130px" height="80px"/></a>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                    <div class="text-center text-dark">
-                      <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
-                      <div class="card-text text-danger text-right"><small><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></div>
-                    </div>
-                  </div>
-              </div><hr>
-            <?php endforeach;
-            //fin affichage prédication avant selection
-        ?>                
-    </div>
-    <!-- fin section gauche videos-->
-
-    <!-- debut section video centre -->    
+                      <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                        <div class="text-center text-dark">
+                          <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
+                          <div class="card-text text-danger text-right"><small><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></div>
+                        </div>
+                      </div>
+                  </div><hr>
+                <?php endforeach;
+                //fin affichage article aleatoire avant selection
+              ?> 
+            </div>               
+          </div>
+        <!-- fin section gauche videos-->
+        <!-- debut section video centre -->    
         <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 "><h2 class="text-danger text-center">Actualités Chrétiennes</h2><hr class="blanc"/>
           <?php foreach($articles as $article): ?> 
             <div class="card text-dark">
@@ -217,7 +216,7 @@
             </div><hr>
           <?php endforeach ?>        
         </div>
-    <!-- debut section droite widgets -->
+        <!-- debut section droite widgets -->
           <div class="col-xs-12 col-sm-12 col-lg-3  col-md-3 ">
               <h2 class="text-center text-danger">Faire Un Don</h2><hr class="rouge"/>
               <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -335,7 +334,7 @@
 <section class="text-light pl-4 pr-4 mt-4">
       <div class="container-fluid">
         <div class="row">
-
+      <!--  section gauche Musiques-->        
           <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
             <h2 class="text-danger text-center">Musiques</h2><hr class="bleu"/>
             <?php foreach($articlesmusiq as $article): ?> 
@@ -358,9 +357,10 @@
                 </div>
               </div>
             </div>
-          <?php endforeach ?>  
+          
+            <?php endforeach ?>  
             <?php
-            foreach($req2 as $reqP): ?>
+            foreach($req1 as $reqP): ?>
               <div class="row mt-4">    
                   <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                     <div class="card-deck">
@@ -394,32 +394,43 @@
           <div class="row mt-4 text-dark">
             <div class="col-xs-12 col-sm-12 col-lg-7  col-md-7 ">
               <div class="mt-3">
-                <div class="card">
-                  <img src="images/lolo.jpg" height="150px" alt="">
-                </div>
-                <div class="row">
-                  <div class="col-md-9">
-                    <h5 class="text-justify mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="text-right"><a href="" class="mt-2 btn btn-outline-danger "><i class="fas fa-arrow-right  mr-2"></i>Lire</a></div>
-                  </div>
-                </div>
+                <?php foreach($articles as $article): ?> 
+                  <div class="card text-dark">
+                  <a href="index.php?page=publication&id=<?= $article->id ?>"><img src="images/<?=$article->image ?>" alt="<?=$article->titre ?>" class="card-img-top" width="630px" height="200px"/></a>
+                    <div class="card-body">
+                      <h4 class="card-title "><?= ucfirst($article->titre)?> par <?=$article->auteur ?></h4>
+                      <p class="card-text"><?= ucfirst(substr(nl2br($article->description),0,100)); ?>...</p>
+                      <div class="row">
+                        <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5">
+                          <a href="index.php?page=publication&id=<?= $article->id ?>" class="btn btn-primary ">Voir la video</a>
+                        </div>
+                        <div class="col-xs-7 col-sm-7 col-lg-7 col-md-7 text-right">
+                          <a href="#" class="btn btn-outline-primary phone_cache"><div class=""><?= date("d/m/Y à H:i", strtotime($article->date_publier));?></div></a>
+                          <a href="#" class="rounded-circle"><img src="images/youtube.png" width="30px" height="30px"/></a>
+                          <a href="#" class="rounded-circle"><img src="images/twitter.png" width="30px" height="30px"/></a>
+                          <a href="#" class="rounded-circle"><img src="images/instagram.png" width="30px" height="30px"/></a>
+                          <a href="#" class="rounded-circle"><img src="images/facebook.png" width="30px" height="30px"/></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div><hr>
+                <?php endforeach ?>
               </div>  
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-5  col-md-5 ">
             <h2 class="text-danger text-center">Tango ya Makusa</h2><hr class="rouge"/>
+            <?php foreach($req3 as $cuis): ?> 
             <div class="card text-dark">
-             <a href="index.php?page=publication&id=<?= $article->id ?>"><img src="images/<?=$article->image ?>" alt="<?=$article->titre ?>" class="card-img-top" width="630px" height="200px"/></a>
+             <a href="index.php?page=publication&id=<?= $cuis->id ?>"><img src="images/<?=$cuis->image ?>" alt="<?=$cuis->titre ?>" class="card-img-top" width="630px" height="200px"/></a>
               <div class="card-body">
-                <h4 class="card-title "><?= ucfirst($article->titre)?> par <?=$article->auteur ?></h4>
-                <p class="card-text"><?= ucfirst(substr(nl2br($article->description),0,100)); ?>...</p>
+                <h4 class="card-title "><?= ucfirst($cuis->titre)?> par <?=$cuis->auteur ?></h4>
+                <p class="card-text"><?= ucfirst(substr(nl2br($cuis->description),0,100)); ?>...</p>
                 <div class="row">
                   <div class="col-xs-5 col-sm-5 col-lg-5 col-md-5">
-                    <a href="index.php?page=publication&id=<?= $article->id ?>" class="btn btn-primary ">Voir la video</a>
+                    <a href="index.php?page=publication&id=<?= $cuis->id ?>" class="btn btn-primary ">Voir la video</a>
                   </div>
                   <div class="col-xs-7 col-sm-7 col-lg-7 col-md-7 text-right">
-                    <a href="#" class="btn btn-outline-primary phone_cache"><div class=""><?= date("d/m/Y à H:i", strtotime($article->date_publier));?></div></a>
+                    <a href="#" class="btn btn-outline-primary phone_cache"><div class=""><?= date("d/m/Y à H:i", strtotime($cuis->date_publier));?></div></a>
                     <a href="#" class="rounded-circle"><img src="images/youtube.png" width="30px" height="30px"/></a>
                     <a href="#" class="rounded-circle"><img src="images/twitter.png" width="30px" height="30px"/></a>
                     <a href="#" class="rounded-circle"><img src="images/instagram.png" width="30px" height="30px"/></a>
@@ -427,7 +438,8 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div><br>
+            <?php endforeach ?> 
             </div>
           </div>       
         </div>

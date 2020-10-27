@@ -36,39 +36,42 @@ $res = $req->fetchobject();
     <ul class="navbar-nav mr-auto">
       
         <li class="nav-item <?php //echo($page = 'dashboard') ? "active" : ''; ?>">
-          <a class="nav-link" href="index.php?page=dashboard"><h5 class="justify-content-center align-items-center"><i class="fab fa-microsoft  text-primary  mr-1"></i>Dashboard</h5></a>
+          <a class="nav-link" href="index.php?page=dashboard"><h6 class="justify-content-center align-items-center"><i class="fab fa-microsoft  text-primary  mr-1"></i>Dashboard</h5></a>
         </li>
         <?php
           if(admin() == 1){
         ?>
         <li class="nav-item <?php //echo($page = 'list') ? "active" : ''; ?>">
-          <a class="nav-link" href="index.php?page=list"><h5 class="justify-content-center align-items-center"><i class="fas fa-list text-primary  mr-1"></i>Listes</h5></a>
+          <a class="nav-link" href="index.php?page=list"><h6 class="justify-content-center align-items-center"><i class="fas fa-list text-primary  mr-1"></i>Listes</h6></a>
         </li>
         <li class="nav-item <?php //echo($page = 'setting') ? "active" : ''; ?>">
-          <a class="nav-link" href="index.php?page=setting"><h5 class="justify-content-center align-items-center"><i class="fas fa-user-cog text-primary  mr-1"></i>Réglages</h5></a>
+          <a class="nav-link" href="index.php?page=setting"><h6 class="justify-content-center align-items-center"><i class="fas fa-user-cog text-primary  mr-1"></i>Réglages</h6></a>
         </li>
         <?php 
           }
         if(redacteur() == 1 || admin() == 1){
           ?>
         <li class="nav-item <?php //echo($page = 'write') ? "active" : ''; ?>">
-          <a class="nav-link" href="index.php?page=write"><h5 class="justify-content-center align-items-center"><i class="far fa-keyboard text-primary  mr-1"></i>Poster</h5></a>
+          <a class="nav-link" href="index.php?page=write"><h6 class="justify-content-center align-items-center"><i class="far fa-keyboard text-primary  mr-1"></i>Poster</h6></a>
         </li>
        <?php
           }
         if(moderateur() == 1 || (admin() == 1)){
        ?>
       <li class="nav-item <?php //echo($page = 'home') ? "active" : ''; ?>">
-        <a class="nav-link" href="index.php?page=omers"><h5 class="justify-content-center align-items-center"><i class="fas fa-pencil-alt mr-1 text-primary "></i>Deux Omers </h5><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php?page=omers"><h6 class="justify-content-center align-items-center"><i class="fas fa-pencil-alt mr-1 text-primary "></i>Deux Omers </h6><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item <?php //echo($page = 'home') ? "active" : ''; ?>">
+        <a class="nav-link" href="index.php?page=mabible"><h6 class="justify-content-center align-items-center"><i class="fas fa-bible mr-1 text-primary"></i>Ma Bible </h6><span class="sr-only">(current)</span></a>
       </li>
       <?php
         }
       ?>
       <li class="nav-item <?php //echo($page = 'home') ? "active" : ''; ?>">
-        <a class="nav-link" href="../index.php?page=index"><h5 class="justify-content-center align-items-center"><i class="fas fa-external-link-alt mr-1 text-primary "></i>voir le site </h5><span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="../index.php?page=index"><h6 class="justify-content-center align-items-center"><i class="fas fa-external-link-alt mr-1 text-primary "></i>voir le site </h6><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item <?php //echo($page = 'logout') ? "active" : ''; ?>">
-        <a class="nav-link" href="index.php?page=logout"><h5 class="justify-content-center align-items-center"><i class="fas fa-sign-out-alt mr-1 text-primary "></i>Déconnexion</h5></a>
+        <a class="nav-link" href="index.php?page=logout"><h6 class="justify-content-center align-items-center"><i class="fas fa-sign-out-alt mr-1 text-primary "></i>Déconnexion</h6></a>
       </li>
     </ul>
     <div>
