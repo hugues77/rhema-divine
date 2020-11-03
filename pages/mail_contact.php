@@ -16,7 +16,7 @@
         <meta name="format-detection" content="address=no" />
         <meta name="format-detection" content="telephone=no" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i" rel="stylesheet" />
-        <title>Votre Code Unique</title>
+        <title>Valider Votre Compte</title>
        
 
         <style type="text/css" media="screen">
@@ -140,7 +140,7 @@
                                                                                                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="30" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
                                                                                                                                 <div class="h2-center" style="color:#383838; font-family:Calibri, Arial, sans-serif, 'SourceSansPro'; font-size:33px; line-height:42px; text-align:center">
-                                                                                                                                        Votre Code de Confirmation
+                                                                                                                                        <?= $sujet ?>
                                                                                                                                 </div>
                                                                                                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
@@ -154,18 +154,18 @@
 
 
                                                                                                                                 <div class="text-2" style="color:#383838; font-family:Calibri, Arial, sans-serif, 'SourceSansPro'; font-size:16px; line-height:22px; text-align:left">
-                                                                                                                                        <strong>Très cher(e) <?= $name ?>, Shaloom</strong>
+                                                                                                                                        <strong> Shaloom l'équipe Rhema-divine, je suis madame/monsieur <?= $nom ?></strong>
                                                                                                                                 </div>
                                                                                                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 
                                                                                                                                 <div class="text-2" style="color:#383838; font-family:Calibri, Arial, sans-serif, 'SourceSansPro'; font-size:16px; line-height:22px; text-align:left">
-                                                                                                                                        Vous aviez accepter de soutenir le site rhema-divine en devenant <?= $role?>; Et nous vous en remercions. De ce fait nous vous adressons le code de confirmation afin de valider votre inscription dans le site étant que <?=$role?> du site.
+                                                                                                                                        <?= $message?>.
                                                                                                                                 </div>
                                                                                                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
                                                                                                                                 
                                                                                                                                 <div class="text-2" style="color:#383838; font-family:Calibri, Arial, sans-serif, 'SourceSansPro'; font-size:22px; line-height:22px; text-align:center">
-                                                                                                                                        <a href="http://rhema-divine.com/admin/index.php?page=new&amp;token=<?= $token.'&amp;email='.$mail?>" target="_blank" class="link" style="color:#2a82c6; text-decoration:none"><span class="link" style="color:#2a82c6; text-decoration:none">http://rhema-divine.com/admin/index.php?page=new?token=<?= $token.'&amp;email='.$mail?></span></a> 
+                                                                                                                                        <a href="" target="_blank" class="link" style="color:#2a82c6; text-decoration:none"><span class="link" style="color:#2a82c6; text-decoration:none"><strong> Adresse E-mail est: </strong> <?=$email?></span></a> 
                                                                                                                                 </div>                                      
 
                                                                                                                                 
@@ -184,7 +184,7 @@
                                                                                                                                                                                                 <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="15"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="40" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 </td>
                                                                                                                                                                                                 <td class="text-btn" style="color:#ffffff; font-family:Calibri, Arial, sans-serif, 'SourceSansPro'; font-size:16px; line-height:20px; text-align:center">
-                                                                                                                                                                                                        <a href="http://rhema-divine.com/admin/index.php?page=new&amp;token=<?= $token.'&amp;email='.$mail?>" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Confirmer votre Compte ici</span></a>
+                                                                                                                                                                                                        <a href="mailto:<?=$email?>?subject=<?=$sujet?>" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Me répondre ici</span></a>
                                                                                                                                                                                                 </td>
                                                                                                                                                                                                 <td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="15"></td>
                                                                                                                                                                                         </tr>

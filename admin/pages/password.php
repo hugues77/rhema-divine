@@ -5,7 +5,7 @@ if(pas_password() === 0){
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-4 card mt-2 mb-2">
+        <div class="col-md-6 offset-md-3 card mt-2 mb-2">
             <?php
             if(isset($_POST['submit'])){
                $password1 = htmlspecialchars(trim($_POST['pswd1'])); 
@@ -90,11 +90,11 @@ if(pas_password() === 0){
                     <button class="btn btn-outline-warning " type="button" id="custom-button"><i class="fas fa-camera mr-2"></i>Choisir un fichier</button>
                     <span id="custom-text">Aucun fichier choisi</span>
                 </div>
-                <center>
-                    <button type="submit" name="submit" class="btn btn-primary mt-2 btn-sm"><i class="fas fa-user mr-2"></i>connexion</button><br>     
-               </center>
+                
+                <button type="submit" name="submit" class="btn btn-primary mt-2  btn-block"><i class="fas fa-user mr-2"></i>Connexion</button><br>     
+               
             </form>
         </div>   
-
+        <div class="col-md-3"></div>
     </div>
 </div>

@@ -36,7 +36,7 @@
                             <?php
                         }
                     }else{
-                        $resp = $req->fetchAll(PDO::FETCH_OBJ);
+                        $resp = $req->fetchAll(PDO::FETCH_OBJ); 
                         foreach($resp as $row)
                         {
                             $_SESSION['email'] = $row->email;

@@ -5,16 +5,23 @@ if(isset($_SESSION['admin'])){
 ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-4 card mt-2 mb-2">
+        <div class="col-md-6 offset-md-3 card mt-2 mb-2">
             <div class="mt-2 text-center">
                 <img src="../images/user-female.png" alt="Modérateur" class="text-center" width="160px">
             </div>
             <h4 class="text-center mt-2">Se connecter</h4>
 
             <?php
-                if(isset($_POST['submit'])){
-                    $email = htmlspecialchars(trim($_POST['mail']));
-                    $token = htmlspecialchars(trim($_POST['pswd']));
+                if(!empty($_GET['token']) && !empty($_GET['email'])){
+                    $token = $_GET['token'];
+                    $email = $_GET['email'];
+                    /**
+                     * l'adresse email et le token va etre recuperer dans le GET
+                     * si c'est bon il vous redirige vers password
+                     * si c'est pas le cas il affiche erreur tout en vous redirigeant vers login
+                     */
+                    //$email = htmlspecialchars(trim($_POST['mail']));
+                    //$token = htmlspecialchars(trim($_POST['pswd']));
                     //$errors = [];
                     //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
                     $a = [
@@ -26,15 +33,13 @@ if(isset($_SESSION['admin'])){
                     $req->execute($a);
                     $result = $req->rowCount($sql);
 
-                    if(empty($email) || empty($token)){
-                        //$errors['empty'] = "Tous les champs doivent etre remplis";
-                        $_SESSION['alert'] = "Tous les champs doivent etre remplis";
-                        $_SESSION['alert_code'] = "error";
-                    }
-                    elseif(!$result){
+                    
+                    if(!$result){
                        // $errors['exist'] = "Ce Modérateur n'existe pas";
                        $_SESSION['alert'] = "Ce Modérateur n'existe pas";
                        $_SESSION['alert_code'] = "error";
+                       header("Location:index.php?page=login");
+                       exit();
                     }
  
 /*                     if(!empty($errors)){
@@ -56,6 +61,13 @@ if(isset($_SESSION['admin'])){
                         //die("zoba");
                         header("Location:index.php?page=password");
                     }
+                }else{
+                    //$errors['empty'] = "Tous les champs doivent etre remplis";
+                    $_SESSION['alert'] = "Le Token et/ou l'email ne corresponds pas, Désolé";
+                    $_SESSION['alert_code'] = "error";
+                    header("Location:index.php?page=login");
+                    exit(); 
+                    
                 }
 
             ?>
@@ -67,6 +79,7 @@ if(isset($_SESSION['admin'])){
                     <a href="?page=login">Déjà Modérateur</a>
                </center>
             </form>
-        </div>   
+        </div> 
+        <div class="col-md-3"></div>  
     </div>
 </div>

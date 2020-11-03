@@ -1,19 +1,28 @@
 <div class="bg-inscription p-5">
 <?php
-if(isset($_POST['submit'])){
-    $email = htmlspecialchars(trim($_POST['pseudo']));
+/*if(isset($_POST['submit'])){
+     $email = htmlspecialchars(trim($_POST['pseudo']));
     $pseudo = htmlspecialchars(trim($_POST['pseudo']));
-    $code = htmlspecialchars(trim($_POST['code']));
+    $code = htmlspecialchars(trim($_POST['code'])); */
     //$errors = [];
-    if(empty($email) || empty($code)){
+
+    //on recupère les données passer en GET  dans l'URL 
+if(!empty($_GET['token']) && !empty($_GET['email'])){
+    $code = $_GET['token'];
+    $email = $_GET['email'];
         //$errors['empty'] = "Tous champs doivent etre remplis. Merci";
-        $_SESSION['alert'] = "Tous champs doivent etre remplis. Merci";
-        $_SESSION['alert_code'] = "error";
-    }
-    elseif(!verif($pseudo,$code,$email)){
+        /* $_SESSION['alert'] = "Tous champs doivent etre remplis. Merci";
+        $_SESSION['alert_code'] = "error"; */
+    
+    if(!verif($pseudo,$code,$email)){
         //$errors['verif'] = "Les informations ne sont pas exactes, vérifier";
         $_SESSION['alert'] = "Les informations ne sont pas exactes, vérifier";
         $_SESSION['alert_code'] = "error";
+        ?>
+        <script>window.document.location="index.php?page=inscription";</script>";
+    <?php
+        exit();
+
     }
 
 /*     if(!empty($errors)){
@@ -34,12 +43,20 @@ if(isset($_POST['submit'])){
         token_zero($email,$pseudo);
         //header("Location:index.php?page=password");
         ?>
-        <script>window.document.location="index.php?page=password";</script>";
+            <script>window.document.location="index.php?page=password";</script>";
         <?php
     }
+}else{
+    $_SESSION['alert'] = "Vos Identifiants ne sont pas correctes! Vérifier";
+    $_SESSION['alert_code'] = "error"; 
+    exit();
+    ?>
+        <script>window.document.location="index.php?page=inscription";</script>";
+    <?php
+    
 }
 ?>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-6 offset-3">
             <form action="" method="POST" class="form-group bg-dark p-5 mt-5 rounded text-light">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -63,5 +80,5 @@ if(isset($_POST['submit'])){
                     </div>
             </form>
         </div>
-    </div>
+    </div> -->
 </div>

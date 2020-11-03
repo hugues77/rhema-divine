@@ -53,6 +53,24 @@ if(redacteur()){
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select id="inputState1" name="categ_livre"  class="form-control categ_livre">
+                                <option value="Matthieu" selected>Nouveau Testament</option>
+                                <option value="Marc">Ancien Testament</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select id="inputState2" name="type_liv"  class="form-control type_liv">
+                                <option value="eva" selected>Les Evangiles</option>
+                                <option value="epi">Les Epitres</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
                 <h4 class="mt-2">Votre message</h4>
                 <textarea class="form-control mt-2 texte" name="texte" rows="4"></textarea>
                 <button class="btn btn-primary rounded btn-lg mt-2 submit" type="submit" name="submit">Poster le verset</button>

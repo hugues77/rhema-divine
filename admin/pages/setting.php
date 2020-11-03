@@ -125,6 +125,7 @@ if(admin() != 1){
                 $reqt = $connexion->prepare($sqle);
                 $so = $reqt->execute($tabl);
                 if($so){
+                    
                     $_SESSION['alert'] = "Très bien, L'opération reussie";
                     $_SESSION['alert_code'] = "success";
                     ?>
@@ -133,70 +134,14 @@ if(admin() != 1){
                     //-----------------------------------------------------------
                     //envoie du mail une fois le modo est enregistré dans la base
                     //-----------------------------------------------------------
-                    $subject = "Ajout du Modérateur dans le site";
-                    $message = "
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <!-- Required meta tags -->
-                        <meta charset='utf-8'>
-                        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-                    
-                        <!-- Bootstrap CSS -->
-                        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
-                        <script src='https://kit.fontawesome.com/bdf8dcd65d.js'></script>
-                        <style>
-                            body{
-                                font-family: sans-serif;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                    <div class='container'>
-                        <div class='bg-dark text-light p-5'>Confirmation pour Administrer le site Rhema divine</div>
-                        <h2 class='text-left text-danger'>Vos Identifiants</h2>
-                    <p class='text-justify'>Bonjour $name, <br>Nous vous envoyons cet email à la suite d'une connexion réussie pour
-                        votre interface Administration; <strong>Rhema divine</strong></p> 
-                        <ul>
-                            <li class='font-weight-bold'><i class='fas fa-envelope-open-text'></i> Identifiant/E-mail de $name : $mail</li>
-                            <li class='font-weight-bold'><i class='fas fa-key'></i> Mot de passe de $name: $token</li>
-                        </ul><hr>
-                        Voici vos coordonnées afin de vous connecter via ce lien : <a href='http://rhema-divine.com/admin/index.php?page=new'>Me connecter dans mon Interface Administration</a><br>
-                        vous etes actuellement: $role
-                        <p>Nous vous remercions pour la confiance que vous nous accordez.Pensez toujours à changer votre mot de passe svp <br>
-                        Ceci est un mail automatique, vous ne pouvez pas y répondre.Merci</p>
-                    <p class='text-left'>Le saviez-vous exactement tous les services de la chaine rhema-divine?</p>
-                    
-                        <section class='bg-softhandy text-light p-4'>
-                        <div class='container-fluid'>
-                            <div class='row'>
-                            <div class='col-md-6'>
-                                <div class='text-white lead'><h2 class='text-left'>Création de Site internet</h2><hr class='blanc'/><br/>
-                                <div class='text-center'>
-                                    <h5>Suivez-nous sur</h5>:
-                                    <a href='https://www.youtube.com/channel/UCJhRhvxttOcHoLk-HIrdrXA/videos><img src='https://cdn.icon-icons.com/icons2/31/PNG/256/social_youtube_2756.png' width='50px' height='50px'/></a>
-                                    <a href='https://twitter.com/HEvangeliste'><img src='https://cdn.icon-icons.com/icons2/31/PNG/256/social_Twitter_2755.png' width='50px' height='50px'/></a>
-                                    <a href='https://www.instagram.com/handyevangeliste/?hl=fr'><img src='https://cdn.icon-icons.com/icons2/1211/PNG/512/1491580658-yumminkysocialmedia06_83104.png' width='50px' height='50px'/></a>
-                                    <a href='https://www.facebook.com/profile.php?id=100007593640343'><img src='https://cdn.icon-icons.com/icons2/285/PNG/256/social_facebook_box_blue_256_30649.png' width='50px' height='50px'/></a>
-                                    <a href='https://www.linkedin.com/in/hugues-eyong-18a060180/'><img src='https://cdn.icon-icons.com/icons2/31/PNG/256/sociallinkedin_member_2751.png' width='50px' height='50px'/></a>
-                                </div>
-                                </div>
-                            </div>
-                            <div class='col-md-6'>
-                                <div class='text-center'><p class='size'>Votre site internet entièrement gratuit.</p>
-                                <button class='btn btn-outline-primary'><a href='#'>Commander le votre ici </a></button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </section>
-                   </div>    
-                    </body>
-                    </html>
-                    ";
+                    $subject = "Rhema-dvine - Ajout du ".$role." dans le site";
+                    ob_start(); 
+                    require_once 'mail.php';
+
+                    $message = ob_get_clean();
                     $header = "MIME-Version: 1.0\r\n";
                     $header .= "Content-type: text/html; charset-utf-8\r\n";
-                    $header .= 'From: no-reply@rhema-divine.com' . "\r\n" . 'Reply-To: contact@rhema-divine.com'  ."\r\n"; 
+                    $header .= 'From: ne-pas-repondre@rhema-divine.com' . "\r\n" . 'Réponse-à: contact@rhema-divine.com'  ."\r\n"; 
 
                     mail($mail, $subject,$message,$header);
                 }else {

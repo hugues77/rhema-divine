@@ -1,5 +1,5 @@
 <div class="row bg-inscription p-5">
-        <div class="col-md-6 offset-3">
+        <div class="col-md-8 offset-2">
             <?php
                 if(isset($_POST['submit'])){
                     $password1 = htmlspecialchars(trim($_POST['password1']));
@@ -67,7 +67,7 @@
                     <div class="row no-gutters">
                     
                         <div class="col-md-5 bg-info">
-                            <div class="mt-5 pl-5 pr-5 pt-5 ml-4" >
+                            <div class="mt-5 pl-5 pr-5 pt-5 ml-5" >
                                 <img src="images/user-female.png" class="bg-white p-2 user_img_password rounded-circle"  alt="">
                             </div>
                             <input class="ml-2 mt-3" type="file" name="profil">
@@ -93,4 +93,5 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-2"></div>
     </div>

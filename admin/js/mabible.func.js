@@ -8,10 +8,12 @@ $(document).ready(function() {
         var livre = $(".livre").val();
         var chapitre = $(".chapitre").val();
         var verset = $(".verset").val();
+        var categ_livre = $(".categ_livre").val();
+        var type_liv = $(".type_liv").val();
         var texte = $(".texte").val();
 
         $.post(
-            'ajax/insertBible.php', { titre: titre, code: j, livre: livre, chapitre: chapitre, verset: verset, texte: texte },
+            'ajax/insertBible.php', { titre: titre, code: j, livre: livre, chapitre: chapitre, verset: verset, categ_livre: categ_livre, type_liv: type_liv, texte: texte },
             function(data) {
                 $('.return').html(data);
                 $('.titre').val('');

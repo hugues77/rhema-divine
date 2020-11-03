@@ -5,6 +5,8 @@ $j = htmlspecialchars(trim($_POST['code']));
 $livre = htmlspecialchars(trim($_POST['livre']));
 $chapitre = htmlspecialchars(trim($_POST['chapitre']));
 $verset = htmlspecialchars(trim($_POST['verset']));
+$categ_livre = htmlspecialchars(trim($_POST['categ_livre']));
+$type_liv = htmlspecialchars(trim($_POST['type_liv']));
 $texte = htmlspecialchars(trim($_POST['texte']));
 //on exécute la requete
 if(isset($livre,$chapitre,$verset, $texte) && !empty($livre) && !empty($chapitre) && !empty($verset) && !empty($texte)){
@@ -32,8 +34,8 @@ if(isset($livre,$chapitre,$verset, $texte) && !empty($livre) && !empty($chapitre
     }else{
          //On insert les données
          
-        $req = $connexion->prepare("INSERT INTO bible (livre,chapitre,verset,titre,jesus,description) VALUES(?,?,?,?,?,?)");
-        $insertData = $req->execute(array($livre,$chapitre,$verset,$titre,$j,$texte));
+        $req = $connexion->prepare("INSERT INTO bible (livre,chapitre,verset,titre,categ_livre,type_liv,jesus,description) VALUES(?,?,?,?,?,?,?,?)");
+        $insertData = $req->execute(array($livre,$chapitre,$verset,$titre,$categ_livre,$type_liv,$j,$texte));
         if ($insertData) {
         echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">

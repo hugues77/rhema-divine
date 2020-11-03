@@ -22,13 +22,13 @@
     <section class="container">
         <div class="row text-justify">
             <div class="mt-1 col-xs-12 col-lg-6 col-sm-12 col-md-6">
-                <p> <div class="mt-1 text-center text-primary"><i class="fas fa-users-cog fa-3x"></i></div><br>Il était une fois à Metz aux environs des années 2015,Ce site est l'initiative de votre Serviteur Handy, Ancien étudiant de l'université de Kinshasa, qui   est  actuellement en France entrain de servir Jésus-christ son sauveur; ensemble avec son Pasteur   Paul  Mungu,frère Boris et le frère Freddy qui est notre excellent réalisateur.
-                    Ce site est un portail de  diffusion des informations relatives  à la bonnes nouvelles de jésus-christ  ou  de tout ce qui se passe dans des églises de  christ.<br><div class="text-center text-primary"><i class="fab fa-teamspeak text-primary text-right fa-3x"></i></div><br>
-                    Nous avons  pu remarquer à travers  le monde, il en existe  des sites web gratuit qui diffusent des  informations  pouvant amener les enfants de Dieu  dans le péché (des  sites pornographiques et  d'autres sites de rencontre)
-                    Nous avons encore remarquer  certains sites  diffusent des informations pour décourager  ou ébranler   la foi  de plusieurs, c'est-à-dire  de tels site  nous montre  que  les mauvaises actions   de  soi disant serviteur de Dieu et certaines émissions ou prédications  qui ne tiennent pas la route   avec la  doctrine de notre seigneur Jésus-Christ. </p><br>
+                <p> <div class="mt-1 text-center text-primary"><i class="fas fa-users-cog fa-3x"></i></div><br>Il était une fois à Metz aux environs des années 2015,Ce site est l'initiative de votre Serviteur Handy,frère Boris et le frère Freddy qui est notre excellent réalisateur.
+                    Ce site est un portail de  diffusion des informations rélatives  à la bonne nouvelle de jésus-christ  ou  de tout ce qui se passe dans des églises de  christ.<br><div class="text-center text-primary"><i class="fab fa-teamspeak text-primary text-right fa-3x"></i></div><br>
+                    Nous avons  pu remarquer à travers  le monde, il en existe  des sites web gratuit qui diffusent des  informations  pouvant amener les enfants de Dieu  dans le péché (des  sites pornographiques et  d'autres sites similaires)
+                    Nous avons encore remarquer  certains sites  diffusent des informations pouvant décourager  ou ébranler   la foi  de plusieurs, c'est-à-dire  de tels site  nous montre  que  les mauvaises actions   de  ceux qui se disent serviteur de Dieu et qui ne les sont pas et certaines émissions ou prédications  qui ne tiennent pas la route   avec la  doctrine de notre seigneur Jésus-Christ. </p><br>
             </div>
                 <div class="mt-1 col-md-6 col-xs-12 col-sm-12 col-lg-6">
-                    <p>En revanche, il en existe  des  vrais hommes Dieu qui sont choisis, appellés et établies  par le   seigneur  jésus-christ car la bible dit: "Car il y a des eunuques qui le sont dès le ventre de leur mère; il y en a qui le sont devenus par les hommes; et il y en a qui se sont rendus tels eux-mêmes, à cause du royaume des cieux" Or s'il y a des faux , il y a aussi des vrais.
+                    <p>En revanche, il en existe  des  vrais hommes Dieu qui sont choisis, appellés et établies  par le   seigneur  jésus-christ car la bible dit: <span class="text-danger">"Car il y a des eunuques qui le sont dès le ventre de leur mère; il y en a qui le sont devenus par les hommes; et il y en a qui se sont rendus tels eux-mêmes, à cause du royaume des cieux"</span> Or s'il y a des faux , il y a aussi des vrais.
                     C'est par là que nous reconnaissons  le mensonge et la vérité mais comment ces vrais hommes de   Dieu  qui ont la révélation de jésus-christ pourront encourager les enfants de Dieu à persévérer dans  la foi en   christ?
                     <div class="mt-1 text-center text-primary"><i class="fab fa-weixin fa-3x"></i></div><br> Il est vrai qu'il y a des sites purement chrétiens et qui diffusent  des informations édifiantes mais  ceux-ci sont quasiment payant avant de passer à l’émission ou prêcher jésus-christ, et comment ces  hommes spirituelles qui n'ont pas de sou, pourront  parler de Dieu ? si les sites pornographiques le  font  gratuit, pourquoi pas nous les chrétiens ?
                     Il m'appartient donc de vous signaler que  le présent site est pour l'édification des chrétiens en   vue   du salut par la parole de Dieu au travers cette espace virtuel et cela est gratuit aujourd'hui  et ça restera gratuit !!!
@@ -49,27 +49,14 @@
                         $sujet = $_POST['sujet'];
                         $message = htmlspecialchars(trim($_POST['message']));
                         $moi = isset($_POST['send']) ? '1' : '';
-                        $destinateur = "afalang.2@gmail.com";
+                        $destinateur = "contact@rhema-divine.com";
                         $header="MIME-Version:1.0\r\n";
                         $header.='From:"http://rhema-divine.com"<contact@rhema-divine.com>'."\n";
                         $header.='Content-Type:text/html; charset="utf-8"'."\n";
                         $header.='Content-Transfert-Encoding:8bit';
-                        
-                        $corps_message = '
-                            <html>
-                                <body>
-                                    <div align="justify">
-                                        <img src="http://rhema-divine.com/images/rhema_gen.JPG" width="800px" height="200px"><br>
-                                        <u>Nom de l\'expéditeur: </u> '.$nom.'<br>
-                                        <u>Adresse Mail: </u> '.$email.'<hr>
-                            
-                            
-                                    '.nl2br($message).'
-                                    </div>
-                                </body>
-                            </html>
-                        
-                        ';
+                        ob_start();
+                        require_once 'mail_contact.php';
+                        $corps_message = ob_get_clean();
                         if (empty($nom) || empty($email) || empty($sujet) || empty($message)) {
                             $_SESSION['alert'] = "vous devrez remplir tous les champs svp";
                             $_SESSION['alert_code'] = "error";
@@ -119,9 +106,9 @@
                                     <span>Sujet du Message</span>
                                     <select class="custom-select" name="sujet">
                                         <option value="">Chosir une option</option>
-                                        <option value="Demande de prière">Démande de prière</option>
-                                        <option value="Question pour une émission">Question pour une émission</option>
-                                        <option value="Problème liée à l'informatique">Problème liée à l'informatique</option>
+                                        <option value="Démande de prière">Démande de prière</option>
+                                        <option value="Question pour une vidéo">Question pour une vidéo</option>
+                                        <option value="Problème lié à l'informatique">Problème lié à l'informatique</option>
                                         <option value="Autres Problème">Autres</option>
                                     </select>
 
