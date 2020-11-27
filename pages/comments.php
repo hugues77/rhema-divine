@@ -1,68 +1,79 @@
 <br><h2 class="text-left">Ajouter un Commentaire</h2>
 
 <?php
-if(isset($_POST['formcomments'])){
-    if(!isset($_SESSION['nom'])){
-        $name = htmlspecialchars(trim($_POST['nom']));
-    }
-     else{
-         $name = $_SESSION['nom'];
-     }
-     if(!isset($_SESSION['prenom'])){
-        $prenom = htmlspecialchars(trim($_POST['prenom']));
-    }
-     else{
-        $prenom = $_SESSION['prenom'];
-     }
-     if(!isset($_SESSION['email'])){
-        $email = htmlspecialchars(trim($_POST['email']));
-    }
-     else{
-        $email = $_SESSION['email'];
-     }
-    
-    $comment = htmlspecialchars(trim($_POST['comment']));
-    //$errors = [];
+if(($_POST['captcha']) === 4){
+    if(isset($_POST['formcomments'])){
+        if(!isset($_SESSION['nom'])){
+            $name = htmlspecialchars(trim($_POST['nom']));
+        }
+        else{
+            $name = $_SESSION['nom'];
+        }
+        if(!isset($_SESSION['prenom'])){
+            $prenom = htmlspecialchars(trim($_POST['prenom']));
+        }
+        else{
+            $prenom = $_SESSION['prenom'];
+        }
+        if(!isset($_SESSION['email'])){
+            $email = htmlspecialchars(trim($_POST['email']));
+        }
+        else{
+            $email = $_SESSION['email'];
+        }
+        
+        $comment = htmlspecialchars(trim($_POST['comment']));
+        //$errors = [];
 
-    if(empty($name) || empty($email) || empty($comment)){
-        //$errors['empty'] = "Tous les champs doivent etre remplis. Merci";
-        $_SESSION['alert'] = "Tous les champs doivent etre remplis. Merci";
-        $_SESSION['alert_code'] = "error";
-    }
-    
-    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            //$errors['email'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
-            $_SESSION['alert'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
+        if(empty($name) || empty($email) || empty($comment)){
+            //$errors['empty'] = "Tous les champs doivent etre remplis. Merci";
+            $_SESSION['alert'] = "Tous les champs doivent etre remplis. Merci";
             $_SESSION['alert_code'] = "error";
         }
         
-    
-
-/*     if(!empty($errors)){
-        ?>
-        <div class="alert alert-danger text-light">
-            <?php foreach($errors as $error){
-                echo $error."<br>";
+        elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                //$errors['email'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
+                $_SESSION['alert'] = "l'adresse mail utilisée n'est pas valide, verifier svp";
+                $_SESSION['alert_code'] = "error";
             }
-                
-            ?>
-        </div>
-    <?php
-    } */
-    else{
-
-        //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
-        //$date = date('d/m/Y H:i:s');
-        $sql = ("INSERT INTO comments (nom, prenom, email, commentaire, article_id) VALUES(?, ?, ?, ?, ?)");
-        $req = $connexion->prepare($sql);
-        $succes =$req->execute(array($name,$prenom,$email,$comment, $_GET['id']));
+            
         
-        if($succes){
-            //$msgComments = "Commentaire envoyé avec succès.bien jouer, Merci";
-            $_SESSION['alert'] = "Commentaire envoyé avec succès.bien jouer, Merci";
-            $_SESSION['alert_code'] = "success";
+
+    /*     if(!empty($errors)){
+            ?>
+            <div class="alert alert-danger text-light">
+                <?php foreach($errors as $error){
+                    echo $error."<br>";
+                }
+                    
+                ?>
+            </div>
+        <?php
+        } */
+        else{
+
+            //$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+            //$date = date('d/m/Y H:i:s');
+            $sql = ("INSERT INTO comments (nom, prenom, email, commentaire, article_id) VALUES(?, ?, ?, ?, ?)");
+            $req = $connexion->prepare($sql);
+            $succes =$req->execute(array($name,$prenom,$email,$comment, $_GET['id']));
+            
+            if($succes){
+                //$msgComments = "Commentaire envoyé avec succès.bien jouer, Merci";
+                $_SESSION['alert'] = "Commentaire envoyé avec succès.bien jouer, Merci";
+                $_SESSION['alert_code'] = "success";
+            }
         }
     }
+}else{
+    ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Attention ! </strong>Vous devrez introduire une bonne valeur pour poster le Commentaire.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php
 }
 ?>
 
@@ -80,12 +91,20 @@ if(isset($_POST['formcomments'])){
     <div class="text-left">
         <input type="email"  class="form-control" name="email" placeholder="votre email svp"><br>
     </div>
-<?php
+    <?php
     } ?>
     
     <div>
         <textarea type="text" class="form-control" name="comment" placeholder="votre Commentaire" rows ="5"></textarea><br>
-        <button type="submit" class="btn btn-primary text-left" name="formcomments">Envoyer mon commentaire</button>
+        <div class="row">
+            <div class="col-md-7">
+                <button type="submit" class="btn btn-primary text-left" name="formcomments">Envoyer mon commentaire</button>
+            </div>
+            <div class="col-md-5">
+                <input type="number" name="captcha" class="form-control"> 
+               ? + 78 = 82
+            </div>
+        </div>
     </div>
     
 </form>

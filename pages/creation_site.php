@@ -15,7 +15,7 @@
               </div>
               <div class="col-xs-12 col-lg-6 col-lg-6 col-md-6">
                 <div class="text-center"><p class="size">Votre site internet entièrement gratuit.</p>
-                <button class="btn btn-outline-primary"><a href="https://api.whatsapp.com/send?phone=33651294692&text=&source=&data=" target="_blank" class="text-white">Commander le votre ici </a></button>
+                <button class="btn btn-outline-primary"><a href="http://www.softhandy.fr/" target="_blank" class="text-white nav-link">Commander le votre ici </a></button>
                 </div>
               </div>
             </div>

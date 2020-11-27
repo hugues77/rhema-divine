@@ -7,13 +7,13 @@ if(redacteur()){
 ?>
 <div class="container">
     <h2>Ma Bible Online</h2>
-    <small class="text-danger">Ce formulaire vous permet de construire une bible authentique et unique pour rhema-divine en vue de l'oeuvre de l'édification des internautes, Attention! En cas d'erreur, contacter l'Admin</small><hr>
+    <small class="text-danger">Attention !! une Amélioration vient d'etre enregistrer, on peut maintenant tracer chaque Admin et vous pouvez seulement voir vos derniers posts!<!-- Ce formulaire vous permet de construire une bible authentique et unique pour rhema-divine en vue de l'oeuvre de l'édification des internautes, Attention! En cas d'erreur, contacter l'Admin --></small><hr>
     <div class="return"></div>
     <div class="row">
         <div class="col-md-7 afficher">
             <!-- <h4 class="">Jean 4</h4>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ut modi expedita, perspiciatis ab sunt consectetur recusandae provident. Delectus expedita, pariatur itaque cumque doloremque eveniet facilis quidem molestias beatae debitis.</p>
-         --></div>
+     --></div>
         <div class="col-md-5">
             <form  method="post" class="formulaire">
                 <div class="row">
@@ -26,7 +26,7 @@ if(redacteur()){
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="code"><h4>J</h4></label>
-                            <input id="code" type="text" class="form-control code" name="code">
+                            <input id="code" type="number" class="form-control code" name="code">
                         </div>
                     </div>
                 </div>
@@ -36,20 +36,21 @@ if(redacteur()){
                         <div class="form-group">
                             <select id="inputState" name="livre"  class="form-control livre">
                                 <option value="Matthieu" selected>Matthieu</option>
-                                <option value="Marc">Marc</option>
+                                <option value="Luc">Luc</option>
+                                <option value="Jean">Jean</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <div class="form-group">
-                                <input  type="text" class="form-control chapitre" name="chapitre" placeholder="Chapitre">
+                                <input  type="number" class="form-control chapitre" name="chapitre" placeholder="Chapitre">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input  type="text" class="form-control verset" name="verset" placeholder="Verset">
+                            <input  type="number" class="form-control verset" name="verset" placeholder="Verset">
                         </div>
                     </div>
                 </div>
@@ -57,8 +58,8 @@ if(redacteur()){
                     <div class="col-md-6">
                         <div class="form-group">
                             <select id="inputState1" name="categ_livre"  class="form-control categ_livre">
-                                <option value="Matthieu" selected>Nouveau Testament</option>
-                                <option value="Marc">Ancien Testament</option>
+                                <option value="nouveau_test" selected>Nouveau Testament</option>
+                                <option value="ancien_test">Ancien Testament</option>
                             </select>
                         </div>
                     </div>

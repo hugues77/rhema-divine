@@ -12,6 +12,7 @@ $(document).ready(function() {
         var type_liv = $(".type_liv").val();
         var texte = $(".texte").val();
 
+
         $.post(
             'ajax/insertBible.php', { titre: titre, code: j, livre: livre, chapitre: chapitre, verset: verset, categ_livre: categ_livre, type_liv: type_liv, texte: texte },
             function(data) {

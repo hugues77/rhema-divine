@@ -46,7 +46,12 @@ if(isset($_POST['submit'])){
     </div>
     <?php } */
     else{
-        $_SESSION['admin'] = $email;
+        $resl = is_log($email, $password);
+        foreach($resl as $rep){
+            $_SESSION['admin'] = $rep->email;
+            $_SESSION['name_admin'] = $rep->name;
+
+        }
         header("Location:index.php?page=dashboard");
         ?>
     <?php
@@ -70,7 +75,7 @@ if(isset($_POST['submit'])){
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
         </div>
         <button type="submit" name="submit" class="btn btn-primary btn-lg"><i class="fas fa-magic"></i> Se connecter</button><hr>
         <div class="text-center"><a href="index.php?page=new">Nouveau Modérateur</a></div>

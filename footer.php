@@ -28,16 +28,16 @@
         <h6 class="text-uppercase font-weight-bold">En savoir Plus</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="#!">Prédications</a>
+          <a href="http://rhema-divine.com/index.php?page=predications">Prédications</a>
         </p>
         <p>
-          <a href="#!">Dévelloppement web</a>
+          <a href="http://rhema-divine.com/index.php?page=musiques">Musiques</a>
         </p>
         <p>
-          <a href="#!">Accès santé</a>
+          <a href="http://www.softhandy.fr/">Dévelloppement web</a>
         </p>
         <p>
-          <a href="#!">Formation</a>
+          <a href="#!">Nos parténaires</a>
         </p>
 
       </div>
@@ -53,13 +53,13 @@
           <a href="#!">Les Deux Omers</a>
         </p>
         <p>
-          <a href="#!">Dévenir Membre</a>
+          <a href="http://rhema-divine.com/index.php?page=inscription">Dévenir Membre</a>
         </p>
         <p>
-          <a href="#!">Faire Un Don</a>
+          <a href="https://www.paypal.com/donate?token=SXdX3-7gduOt7SwgV1iqK6uFOX1RO1axzzp68clphdqZWzGXaz-kQdnpGmvZbuBUZpkt_0BOV7ufX8ua">Faire Un Don</a>
         </p>
         <p>
-          <a href="#!">A propos</a>
+          <a href="http://rhema-divine.com/index.php?page=sommes">A propos</a>
         </p>
 
       </div>
@@ -91,7 +91,7 @@
 
   <!-- Copyright -->
   <div class="bg-primary footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://api.whatsapp.com/send?phone=33651294692&text=&source=&data=" target="_blank" class="text-white"> Softhandy, Leader du web International</a>
+    <a href="http://www.softhandy.fr/" target="_blank" class="text-white"> Softhandy, Leader du web International</a>
   </div>
   <!-- Copyright -->
 

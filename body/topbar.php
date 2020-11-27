@@ -84,11 +84,14 @@
                 <li class="nav-item <?php echo($page == "predications") ||($page == "publication")? "active" : "" ?>">
                     <a class="nav-link" href="index.php?page=predications">Prédications</a>
                 </li>
+                <li class="nav-item <?php echo($page == "musiques") ||($page == "musique")? "active" : "" ?>">
+                    <a class="nav-link" href="index.php?page=musiques">Musiques</a>
+                </li>
                 <li class="nav-item <?php echo($page == "messagerie")? "active": ""  ?>">
-                    <a class="nav-link" href="index.php?page=messagerie">Messagerie</a>
+                    <a class="nav-link" href="index.php?page=messagerie">Forum</a>
                 </li>
                 <li class="nav-item <?php echo($page == "bible")? "active": ""  ?>">
-                    <a class="nav-link" href="https://emcitv.com/bible/lire-la-bible.html" target="_blank">Lire la Bible</a>
+                    <a class="nav-link" href="https://emcitv.com/bible/lire-la-bible.html" target="_blank">La Bible</a>
                 </li>
                 <li class="nav-item <?php echo($page == "trouver_eglise")? "active": ""  ?>">
                     <a class="nav-link" href="index.php?page=trouver_eglise">Trouvez une église</a>

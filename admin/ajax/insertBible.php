@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'main-functions.php';
 $titre = htmlspecialchars(trim($_POST['titre']));
 $j = htmlspecialchars(trim($_POST['code']));
@@ -8,6 +9,7 @@ $verset = htmlspecialchars(trim($_POST['verset']));
 $categ_livre = htmlspecialchars(trim($_POST['categ_livre']));
 $type_liv = htmlspecialchars(trim($_POST['type_liv']));
 $texte = htmlspecialchars(trim($_POST['texte']));
+$admin = $_SESSION['name_admin'];
 //on exécute la requete
 if(isset($livre,$chapitre,$verset, $texte) && !empty($livre) && !empty($chapitre) && !empty($verset) && !empty($texte)){
     //on verifie si le verset à été déjà enregistrer
@@ -34,8 +36,8 @@ if(isset($livre,$chapitre,$verset, $texte) && !empty($livre) && !empty($chapitre
     }else{
          //On insert les données
          
-        $req = $connexion->prepare("INSERT INTO bible (livre,chapitre,verset,titre,categ_livre,type_liv,jesus,description) VALUES(?,?,?,?,?,?,?,?)");
-        $insertData = $req->execute(array($livre,$chapitre,$verset,$titre,$categ_livre,$type_liv,$j,$texte));
+        $req = $connexion->prepare("INSERT INTO bible (livre,chapitre,verset,titre,categ_livre,type_liv,jesus,description,admin) VALUES(?,?,?,?,?,?,?,?,?)");
+        $insertData = $req->execute(array($livre,$chapitre,$verset,$titre,$categ_livre,$type_liv,$j,$texte,$admin));
         if ($insertData) {
         echo '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
