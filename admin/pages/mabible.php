@@ -37,7 +37,7 @@ if(redacteur()){
                             <select id="inputState" name="livre"  class="form-control livre">
                                 <option value="Matthieu" selected>Matthieu</option>
                                 <option value="Luc">Luc</option>
-                                <option value="Jean">Jean</option>
+                                <option value="Romains">Romains</option>
                             </select>
                         </div>
                     </div>
@@ -66,8 +66,8 @@ if(redacteur()){
                     <div class="col-md-6">
                         <div class="form-group">
                             <select id="inputState2" name="type_liv"  class="form-control type_liv">
-                                <option value="eva" selected>Les Evangiles</option>
-                                <option value="epi">Les Epitres</option>
+                                <option value="Les Evangiles" selected>Les Evangiles</option>
+                                <option value="Epîtres de Paul">Epîtres de Paul</option>
                             </select>
                         </div>
                     </div>

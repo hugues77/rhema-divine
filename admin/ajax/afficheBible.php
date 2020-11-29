@@ -18,7 +18,7 @@ foreach($res as $re){
             <h4><?= $re->livre ?> <?= $re->chapitre ?>. <?= $re->verset ?></h4>
         </div>
         <div class="col-md-5 text-right">
-            <i><small class="text-danger"><i class="far fa-user"></i>Publié(e) par <?=$re->admin ?></small></i>
+            <i><small class="text-danger"><i class="far fa-user font-italic"></i> Publié(e) par <?=$re->admin ?></small></i>
         </div>
     </div>
     <small class="font-weight-bold"><?= $re->titre?></small>

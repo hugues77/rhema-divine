@@ -1,7 +1,7 @@
 <br><h2 class="text-left">Ajouter un Commentaire</h2>
 
 <?php
-if(($_POST['captcha']) === 4){
+if(trim($_POST['captcha']) === '4'){
     if(isset($_POST['formcomments'])){
         if(!isset($_SESSION['nom'])){
             $name = htmlspecialchars(trim($_POST['nom']));
@@ -97,12 +97,12 @@ if(($_POST['captcha']) === 4){
     <div>
         <textarea type="text" class="form-control" name="comment" placeholder="votre Commentaire" rows ="5"></textarea><br>
         <div class="row">
-            <div class="col-md-7">
-                <button type="submit" class="btn btn-primary text-left" name="formcomments">Envoyer mon commentaire</button>
-            </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <input type="number" name="captcha" class="form-control"> 
-               ? + 78 = 82
+                + 78 = 82
+            </div>
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-primary text-left" name="formcomments">Envoyer mon commentaire</button>
             </div>
         </div>
     </div>
