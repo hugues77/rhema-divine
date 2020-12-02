@@ -37,7 +37,8 @@ if(redacteur()){
                             <select id="inputState" name="livre"  class="form-control livre">
                                 <option value="Matthieu" selected>Matthieu</option>
                                 <option value="Luc">Luc</option>
-                                <option value="Romains">Romains</option>
+                                <option value="Philippiens">Philippiens</option>
+                                <option value="Colossiens">Colossiens</option>
                             </select>
                         </div>
                     </div>
