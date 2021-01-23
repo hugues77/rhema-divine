@@ -80,7 +80,7 @@
  }
  
  hr.blanc {
-     border: 5px solid rgb(175, 171, 171);
+     border: 5px solid rgb(19, 17, 17);
  }
  
  hr.rouge {
@@ -88,7 +88,7 @@
  }
  
  hr.bleu {
-     border: 5px solid rgb(18, 18, 231);
+     border: 5px solid rgba(9, 9, 243, 1);
  }
  /* border radius pour verset biblique*/
  
@@ -110,6 +110,10 @@
  .size {
      font-size: 4em;
  }
+
+ .error_titre {
+    font-size: 8em;
+}
  
  img.img-pred {
      height: 200px;
@@ -135,7 +139,7 @@
      font-size: 18px;
  }
  
- ul li a:hover {
+ nav ul li a:hover {
      border-bottom: 2px solid rgb(219, 95, 95);
  }
  
@@ -163,6 +167,26 @@
  /* // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap */
  /* Small devices (landscape phones, 575px and up) */
+
+
+ /* margin pour les livre de la bible a gauche*/
+.marginlivre{
+    /* margin-left: 65%;
+    position: right; */
+    /*content: '+'; */
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1em;
+
+}
+.margintitrelivre{
+    margin-left: 30%;
+    position:right;
+}
+
+/*  fin margin pour les livre de la bible a gauche*/
  
  @media (max-width: 575.98px) {
      .phone_cache {

@@ -6,7 +6,7 @@ $(document).ready(function(){
         $.post('ajax/voir_com.php',{id:id},function(){
             $("#commentaire_"+id).hide();
             swal("Le Commentaire: ", commentaire +"  est passé en vue!");
-            //location.reload(); //pour refraichir automatiquement la page
+            //location.reload(); //pour refraichir automatiquement la page 
         });
         
     });

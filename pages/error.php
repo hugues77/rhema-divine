@@ -1,19 +1,20 @@
 <div class="container">
- 
-    
-    <div class="alert alert-danger mt-3">Aie Aie aie..</div>
-    <h2 class="p-2 bg-dark text-light text-center">La page que vous recherchée n'existe plus ; Desolé</h2>
     <div class="row">
-        <div class="col-md-4 offset-2">
-            <img src="images/vandamme.jpg" width="300px" alt="">
+        <div class="col-md-6 offset-2">
+            <h1 class="text-left mt-5 error_titre font-weight-bold"><strong>Oups !</strong></h1>
+            <h1 class="text-left">
+                La page que vous récherchez semble introuvable.
+            </h1>
+            <p class="text-danger font-weight-bold">Code d'erreur: 404</p>
+            <p>Voici quelques liens utiles à la place: <br>
+                <i class="fas fa-long-arrow-alt-right"></i><a href="index.php?page=index" class="text-decoration-none ms-2">Page d'accueil</a><br>
+                <i class="fas fa-long-arrow-alt-right"></i><a href="index.php?page=predications" class="text-decoration-none ms-2">Prédications</a><br>
+                <i class="fas fa-long-arrow-alt-right"></i><a href="index.php?page=musiques" class="text-decoration-none ms-2">Musiques</a><br>
+                <i class="fas fa-long-arrow-alt-right"></i><a href="index.php?page=bible" class="text-decoration-none ms-2">Lire la bible</a>
+            </p>
         </div>
-        <div class="col-md-5 mt-5">
-            <h5 class="mt-5 align-items-center"><i class="fas fa-quote-left mr-1"></i>
-                Merci de la retrouver vite dans la recherche, en haut du menu horizontale soit écrivez-nous via le formulaire de contact et nous vous indiquerons où elle est passée.
-                sinon, Le monsieur à gauche vous livre un combat,  est ce que vous arruverez à remporter?<i class="fas fa-quote-right ml-2"></i>
-            </h5>
-            <div class="text-center mt-3"><a href="index.php?page=index" class="btn btn-primary btn-lg "> Cliquer pour aller à l'accueil</a></div>
+        <div class="col-md-4">
+            <img src="images/homme-404.jpg" width="500px" height="500px" alt="bonhomme-rhema">
         </div>
     </div>
-
 </div>

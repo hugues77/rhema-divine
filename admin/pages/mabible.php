@@ -5,7 +5,7 @@ if(redacteur()){
 
 
 ?>
-<div class="container">
+<div class="ml-5 mr-5">
     <h2>Ma Bible Online</h2>
     <small class="text-danger">Attention !! une Amélioration vient d'etre enregistrer, on peut maintenant tracer chaque Admin et vous pouvez seulement voir vos derniers posts!<!-- Ce formulaire vous permet de construire une bible authentique et unique pour rhema-divine en vue de l'oeuvre de l'édification des internautes, Attention! En cas d'erreur, contacter l'Admin --></small><hr>
     <div class="return"></div>
@@ -37,8 +37,7 @@ if(redacteur()){
                             <select id="inputState" name="livre"  class="form-control livre">
                                 <option value="Matthieu" selected>Matthieu</option>
                                 <option value="Luc">Luc</option>
-                                <option value="Philippiens">Philippiens</option>
-                                <option value="Colossiens">Colossiens</option>
+                                <option value="Apocalypse">Apocalypse</option>
                             </select>
                         </div>
                     </div>
@@ -68,7 +67,7 @@ if(redacteur()){
                         <div class="form-group">
                             <select id="inputState2" name="type_liv"  class="form-control type_liv">
                                 <option value="Les Evangiles" selected>Les Evangiles</option>
-                                <option value="Epîtres de Paul">Epîtres de Paul</option>
+                                <option value="Livre de la Révélation">Livre de la Révélation</option>
                             </select>
                         </div>
                     </div>

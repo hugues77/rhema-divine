@@ -18,7 +18,7 @@ function is_admin($email,$password){
 
         $rep_ses = $req->fetchAll(PDO::FETCH_OBJ);
     
-        $exist = $req->rowCount($sql);
+        $exist = $req->rowCount();
         return $exist;
         //var_dump($exist); 
 }

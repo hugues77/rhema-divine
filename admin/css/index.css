@@ -154,6 +154,10 @@ font-family: 'Rubik', sans-serif;
     cursor: pointer;
 }
 
+.error_titre {
+    font-size: 8em;
+}
+ 
 
 
 /* // Extra small devices (portrait phones, less than 576px) */

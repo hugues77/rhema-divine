@@ -1,5 +1,5 @@
 <?php
-$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+$connexion = new PDO('mysql:host=localhost; dbname=rhema','root','root');
 
 //--------------------------------------------
 //connexion de la base de données en ligne

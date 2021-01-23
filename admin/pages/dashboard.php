@@ -69,7 +69,7 @@
                         <a href="#" commentaire ="<?=$comment->commentaire ?>" id="<?= $comment->id ?>" class="btn btn-danger btn-sm supp_com"><i class="fas fa-trash-alt"></i></a>
                         <!-- Button trigger modal -->
                         <a href="#comment_<?= $comment->id?>" class="btn btn-primary btn-sm" data-toggle="modal" >
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fas fa-ellipsis-v"></i> 
                         </a>
 
                         <!-- Modal -->
@@ -99,7 +99,7 @@
                 <?php 
                     } 
                 } else{ ?>
-                    <div class="alert alert-danger">Acun Commentaire à validé, Merci</div>
+                    <div class="alert alert-danger">Aucun Commentaire à validé, Merci</div>
                    <?php 
                 }?>
                 

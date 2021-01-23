@@ -1,6 +1,6 @@
 <?php
    
-    include 'main-functions.php';
+    require_once 'main-functions.php';
     $heure = date("H:i"); 
     
     /**
@@ -21,8 +21,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap4 CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     -->
+     <!-- Bootstrap5 CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/index.css" type="text/css"/>
     <link rel="stylesheet" href="css/tchat.css" type="text/css"/>
@@ -71,13 +76,13 @@
     </div>
     <!-- menu-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php"><img src="images/rd.png" class="rounded" width="15%"/>Rhema divine</a>
+        <a class="navbar-brand me-3" href="index.php"><img src="images/rd.png" class="rounded ms-1" width="15%"/>Rhema divine</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto ">
                 <li class="nav-item <?php echo($page == "index") || (isset($index))? "active": ""  ?>">
                     <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
                 </li>
@@ -91,7 +96,7 @@
                     <a class="nav-link" href="index.php?page=messagerie">Forum</a>
                 </li>
                 <li class="nav-item <?php echo($page == "bible")? "active": ""  ?>">
-                    <a class="nav-link" href="https://emcitv.com/bible/lire-la-bible.html" target="_blank">La Bible</a>
+                    <a class="nav-link" href="index.php?page=bible">La Bible</a>
                 </li>
                 <li class="nav-item <?php echo($page == "trouver_eglise")? "active": ""  ?>">
                     <a class="nav-link" href="index.php?page=trouver_eglise">Trouvez une église</a>
@@ -100,9 +105,9 @@
                     <a class="nav-link" href="index.php?page=sommes">Nous sommes</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <form class="d-flex my-1 ms-5">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-secondary" type="submit">Search</button>
             </form>
         </div>
     </nav>

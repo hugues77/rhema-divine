@@ -4,7 +4,7 @@
 <footer class="page-footer font-small unique-color-dark">
 
   <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5">
+  <div class="container text-justify text-md-left mt-5">
 
     <!-- Grid row -->
     <div class="row mt-3">
@@ -28,16 +28,16 @@
         <h6 class="text-uppercase font-weight-bold">En savoir Plus</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="http://rhema-divine.com/index.php?page=predications">Prédications</a>
+          <a href="http://rhema-divine.com/index.php?page=predications"  class="text-decoration-none">Prédications</a>
         </p>
         <p>
-          <a href="http://rhema-divine.com/index.php?page=musiques">Musiques</a>
+          <a href="http://rhema-divine.com/index.php?page=musiques"  class="text-decoration-none">Musiques</a>
         </p>
         <p>
-          <a href="http://www.softhandy.fr/">Dévelloppement web</a>
+          <a href="http://www.softhandy.fr/" target="blank" class="text-decoration-none">Dévelloppement web</a>
         </p>
         <p>
-          <a href="#!">Nos parténaires</a>
+          <a href="http://www.providencesante.fr/" target="blank" class="text-decoration-none">Nos parténaires</a>
         </p>
 
       </div>
@@ -50,16 +50,16 @@
         <h6 class="text-uppercase font-weight-bold">Liens Utiles</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="#!">Les Deux Omers</a>
+          <a href="#!" class="text-decoration-none">Les Deux Omers</a>
         </p>
         <p>
-          <a href="http://rhema-divine.com/index.php?page=inscription">Dévenir Membre</a>
+          <a href="http://rhema-divine.com/index.php?page=inscription" class="text-decoration-none">Dévenir Membre</a>
         </p>
         <p>
-          <a href="https://www.paypal.com/donate?token=SXdX3-7gduOt7SwgV1iqK6uFOX1RO1axzzp68clphdqZWzGXaz-kQdnpGmvZbuBUZpkt_0BOV7ufX8ua">Faire Un Don</a>
+          <a href="https://www.paypal.com/cgi-bin/webscr" class="text-decoration-none">Faire Un Don</a>
         </p>
         <p>
-          <a href="http://rhema-divine.com/index.php?page=sommes">A propos</a>
+          <a href="http://rhema-divine.com/index.php?page=sommes" class="text-decoration-none">A propos</a>
         </p>
 
       </div>
@@ -90,8 +90,8 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="bg-primary footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="http://www.softhandy.fr/" target="_blank" class="text-white"> Softhandy, Leader du web International</a>
+  <div class="bg-primary footer-copyright text-center py-3">© 2021 Copyright:
+    <a href="http://www.softhandy.fr/" target="_blank" class="text-white text-decoration-none"> Softhandy, Leader du web International</a>
   </div>
   <!-- Copyright -->
 
@@ -102,8 +102,13 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
     <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.caroufredsel/6.2.1/jquery.carouFredSel.packed.js"></script>
     <script type="text/javascript" src="js/video_bas.js"></script>
@@ -136,6 +141,15 @@
          if(in_array('predications.js',$pages_js)){ ?>
           <script type="text/javascript" src="js/predications.js"></script>
         <?php }
+        //js pour bible
+        if(in_array('bible.js',$pages_js)){ ?>
+          <script type="text/javascript" src="js/bible.js"></script>
+        <?php }
+        //js pour lire bible
+        if(in_array('lire.js',$pages_js)){ ?>
+          <script type="text/javascript" src="js/lire.js"></script>
+        <?php }
+        
 
     ?>
 

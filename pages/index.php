@@ -44,13 +44,13 @@
     <section class="text-light pl-4 pr-4">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 "><h2 class="text-danger text-center">A la Une</h2><hr class="bleu"/>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 "><h2 class="text-danger text-left">A la Une</h2><hr class="bleu">
             <!--  section les videos partie gauche -->
-            <form action="" method="POST">
+            <form  method="POST">
               <div class="form-group">
                   <div class="row">
                     <div class="col-xs-9 col-sm-9 col-lg-9 col-md-9">   
-                      <select name="categorie" class="custom-select" id="">
+                      <select name="categorie" class="custom-select form-control" id="">
                         <option selected value="">Choisir la catégorie...</option>
                           <?php foreach($reps as $rep){
                               $categorie = $rep->lib_categ ;?>
@@ -80,13 +80,13 @@
                       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="card-deck">
                           <div class="card">
-                          <a href="index.php?page=publication&id=<?= $reqM->id ?>"><img class="card-img-top" src="images/<?=$reqM->image ?>" width="130px" height="80px"/></a>
+                            <a href="index.php?page=publication&id=<?= $reqM->id ?>"><img class="card-img-top" src="images/<?=$reqM->image ?>" width="130px" height="80px"/></a>
                           </div>
                         </div> 
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="text-center text-dark">
-                        <a href="index.php?page=publication&id=<?= $reqM->id ?>"><h4 class="text-left"><?= ucfirst(substr(nl2br($reqM->titre),0,18))?>...</h4></a>
+                        <div class="text-dark">
+                          <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqM->id ?>"><h4 class="text-left"><?= ucfirst(substr(nl2br($reqM->titre),0,18))?>...</h4></a>
                           <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqM->date_publier ))?></small></p>
                         </div>
                       </div>
@@ -105,8 +105,8 @@
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="text-center text-dark">
-                          <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
+                          <div class="text-dark">
+                          <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
                             <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></p>
                           </div>
                         </div>
@@ -127,8 +127,8 @@
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="text-center text-dark">
-                            <a href="index.php?page=publication&id=<?= $reqC->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqC->titre),0,20))?> ...</h4></a>
+                          <div class="text-dark">
+                            <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqC->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqC->titre),0,20))?> ...</h4></a>
                             <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqC->date_publier ))?></small></p>
                           </div>
                         </div>
@@ -149,8 +149,8 @@
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="text-center text-dark">
-                            <a href="index.php?page=publication&id=<?= $reqD->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqD->titre),0,20))?> ...</h4></a>
+                          <div class="text-left text-dark">
+                            <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqD->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqD->titre),0,20))?> ...</h4></a>
                             <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqD->date_publier ))?></small></p>
                           </div>
                         </div>
@@ -180,9 +180,9 @@
                         </div>
                       </div>
                       <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        <div class="text-center text-dark">
-                          <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
-                          <div class="card-text text-danger text-right"><small><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></div>
+                        <div class="text-dark">
+                          <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left "><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
+                          <div class="card-text text-danger text-right"><small class=""><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></div>
                         </div>
                       </div>
                   </div><hr>
@@ -370,8 +370,8 @@
                     </div>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                    <div class="text-center text-dark">
-                      <a href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
+                    <div class="text-left text-dark">
+                      <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left text-decoration-none"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
                       <div class="card-text text-danger text-right"><small><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></div>
                     </div>
                   </div>

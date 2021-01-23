@@ -50,7 +50,7 @@ function verif_Url_youtube($url){
         $req = $connexion->prepare($sql);
         $req->execute($array);
     
-        $exist_url = $req->rowCount($sql);
+        $exist_url = $req->rowCount();
         return $exist_url;
         //var_dump($exist);
 }

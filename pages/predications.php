@@ -22,7 +22,7 @@
                     $rqt ="SELECT * FROM article WHERE categorie_article='Predication' AND CONCAT(auteur,titre) LIKE '%$titre%' ";
                     $req_run = $connexion->query($rqt);
                     $reslt = $req_run->fetchAll(PDO::FETCH_OBJ);
-                    $data = $req_run->rowCount($rqt);
+                    $data = $req_run->rowCount();
 
                     //requete pour les nombre de recherche
                     $rqtt ="SELECT COUNT(*) as nb_res FROM article WHERE categorie_article='Predication' AND CONCAT(auteur,titre) LIKE '%$titre%' ";
@@ -34,9 +34,7 @@
                     if($data > 0){ ?>
                       <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>Félicitation!</strong> Nous avons <b><?=$nb_ligne?></b> résultats trouvés pour <?= $titre?>.
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
                       <?php
                     }else{

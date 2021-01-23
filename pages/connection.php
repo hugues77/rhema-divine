@@ -20,12 +20,13 @@
   //$connexion = new PDO('mysql:host=185.98.131.128; dbname=rhema1369589','rhema1369589','pkol3hkr00');
 
   //preparer la requete
- $req = $connexion->query("SELECT * FROM article WHERE poster='1' ORDER BY date_publier DESC LIMIT 0,5");
- $art_musq = $connexion->query("SELECT * FROM article WHERE poster='1' ORDER BY date_publier DESC LIMIT 5,1");
+    $req = $connexion->query("SELECT * FROM article WHERE poster='1' ORDER BY date_publier DESC LIMIT 0,5");
+    $art_musq = $connexion->query("SELECT * FROM article WHERE poster='1' ORDER BY date_publier DESC LIMIT 5,1");
 
     //affiche1
-    $articles = $req->fetchAll(PDO::FETCH_OBJ);
-    $articlesmusiq = $art_musq->fetchAll(PDO::FETCH_OBJ);
+    $articles = $req->fetchAll(PDO::FETCH_OBJ); //affiche les articles avant les deux omers
+
+    $articlesmusiq = $art_musq->fetchAll(PDO::FETCH_OBJ); //affiche les articles apres deux omers
     //var_dump($articles);
     //executer la req
     
@@ -82,6 +83,68 @@
     // $_SESSION['nom'] = $profilMembre->nom;
     // $_SESSION['prenom'] = $profilMembre->prenom;
     // $_SESSION['nom'] = $profilMembre->email;
+
+    /*====================================================================== 
+                            TRAITEMENT DE LA BIBLE
+    ==========================================================================*/
+    /**
+     * requete pour afficher les types des livre */
+
+    $bible = $connexion->query("SELECT DISTINCT type_liv FROM bible   ORDER BY id");
+    $sql = $bible->fetchAll(PDO::FETCH_OBJ);
+
+    /**
+     * requete pour afficher les livres selon les types de livres
+     */
+    $livre = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv= '$type'   ORDER BY id");
+    $reslivre = $bible->fetchAll(PDO::FETCH_OBJ);
+
+
+    /**
+     * requete pour afficher Tous les   livres grouper par type livre
+     * Evangiles
+     *  */
+
+    $bible = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Les Evangiles'  ORDER BY id");
+    $eva = $bible->fetchAll(PDO::FETCH_OBJ);
+
+    /**
+     * requete pour afficher Tous les   livres grouper par type livre
+     * Actes des Apotres
+     *  */
+
+    $bible2 = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Actes des Apotres'  ORDER BY id");
+    $actes = $bible2->fetchAll(PDO::FETCH_OBJ);
+    
+     /**
+     * requete pour afficher Tous les   livres grouper par type livre
+     * Epitres de paul
+     *  */
+
+    $bible3 = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Epitres de Paul'  ORDER BY id");
+    $epitres = $bible3->fetchAll(PDO::FETCH_OBJ);
+
+    /**
+     * requete pour afficher Tous les   livres grouper par type livre
+     * Epitres de paul
+     *  */
+
+    $bible4 = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Autres Epîtres'  ORDER BY id");
+    $autres = $bible4->fetchAll(PDO::FETCH_OBJ);
+
+    /**
+     * requete pour afficher Tous les   livres grouper par type livre
+     * Epitres de paul
+     *  */
+
+    $bible5 = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Livre de la Révélation'  ORDER BY id");
+    $revelat = $bible5->fetchAll(PDO::FETCH_OBJ);
+
+
+
+   
+    
+
 
     
   ?>

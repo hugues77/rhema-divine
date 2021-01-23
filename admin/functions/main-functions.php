@@ -21,7 +21,7 @@
     }catch (PDOException $e){
             die("Erreur de connexion à la base de données, Merci");
     } */
-    $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+    $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','root');
 
     function admin(){
         if(isset($_SESSION['admin'])){
@@ -35,7 +35,7 @@
             $sql = "SELECT * FROM admins WHERE email=:email AND role=:role";
             $req = $connexion->prepare($sql);
             $req->execute($a);
-            $exist = $req->rowCount($sql);
+            $exist = $req->rowCount();
             return $exist;
         }else{
             return 0;
@@ -55,7 +55,7 @@
             $sql = "SELECT * FROM admins WHERE email=:email AND role=:role";
             $req = $connexion->prepare($sql);
             $req->execute($a);
-            $exist = $req->rowCount($sql);
+            $exist = $req->rowCount();
             return $exist;
         }else{
             return 0;
@@ -74,7 +74,7 @@
             $sql = "SELECT * FROM admins WHERE email=:email AND role=:role";
             $req = $connexion->prepare($sql);
             $req->execute($a);
-            $exist = $req->rowCount($sql);
+            $exist = $req->rowCount();
             return $exist;
         }else{
             return 0;
@@ -87,7 +87,7 @@
         $sql = "SELECT * FROM admins WHERE email= '{$_SESSION['admin']}' AND password = '0' ";
         $req= $connexion->prepare($sql);
         $req->execute();
-        $exist = $req->rowCount($sql);
+        $exist = $req->rowCount();
         return $exist;
     }
 ?>

@@ -14,9 +14,9 @@
          //echo "<div class='mt-3 container alert alert-danger'>erreur, la page n'existe plus</div>";
          //die("Location:index.php?page=error");
          ?>
-         <script type="text/javascript">
-            document.location.href="index.php?page=error";
-         </script>
+            <script type="text/javascript">
+                document.location.href="index.php?page=error";
+            </script>
          <?php
     }
 
@@ -29,7 +29,7 @@
             <div class="col-xs-8 col-sm-8 col-lg-8 col-md-8 text-center pl-3 pr-3 ">
                 <?php foreach($videos as $video): 
                     $url = "https://www.youtube.com/embed/".$video->url_youtub ?>
-                <h2 class="bg-info text-light  justify-content-center align-items-center" style="height:50px"><?= $video->titre ?></h2>
+                    <h2 class="bg-info text-light  justify-content-center align-items-center" style="height:50px"><?= $video->titre ?></h2>
                     <iframe class="taille_youtube_xs taille_youtube_md taille_youtube_sm"  
                         src="<?=$url ?>" 
                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -60,6 +60,5 @@
             </div>
         </div>
     </div>
-
 </section>
 
