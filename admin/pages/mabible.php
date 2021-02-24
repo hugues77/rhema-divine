@@ -7,7 +7,7 @@ if(redacteur()){
 ?>
 <div class="ml-5 mr-5">
     <h2>Ma Bible Online</h2>
-    <small class="text-danger">Attention !! une Amélioration vient d'etre enregistrer, on peut maintenant tracer chaque Admin et vous pouvez seulement voir vos derniers posts!<!-- Ce formulaire vous permet de construire une bible authentique et unique pour rhema-divine en vue de l'oeuvre de l'édification des internautes, Attention! En cas d'erreur, contacter l'Admin --></small><hr>
+    <small class="text-danger"><b>Félicitations à vous !</b> le nouveau testament vient d'etre fini et encore un éffort pour cette partie.<!-- Ce formulaire vous permet de construire une bible authentique et unique pour rhema-divine en vue de l'oeuvre de l'édification des internautes, Attention! En cas d'erreur, contacter l'Admin --></small><hr>
     <div class="return"></div>
     <div class="row">
         <div class="col-md-7 afficher">
@@ -16,28 +16,21 @@ if(redacteur()){
      --></div>
         <div class="col-md-5">
             <form  method="post" class="formulaire">
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="form-group">
-                            <label for="titre"><h4>Titre de l'enseignement</h4></label>
-                            <input id="titre" type="text" class="form-control titre" name="titre">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="code"><h4>J</h4></label>
-                            <input id="code" type="number" class="form-control code" name="code">
-                        </div>
-                    </div>
+                 
+                <div class="form-group">
+                    <label for="titre"><h4>Titre de l'enseignement</h4></label>
+                    <input id="titre" type="text" class="form-control titre" name="titre">
                 </div>
                 <h4 class="mt-2">Sélectionner le chapitre et le verset </h4>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <select id="inputState" name="livre"  class="form-control livre">
-                                <option value="Matthieu" selected>Matthieu</option>
-                                <option value="Luc">Luc</option>
-                                <option value="Apocalypse">Apocalypse</option>
+                                <option value="Genèse" selected>Genèse</option>
+                                <option value="Exode">Exode</option>
+                                <option value="Lévitique">Lévitique</option>
+                                <option value="Nombres">Nombres</option>
+                                <option value="Deutéronome">Deutéronome</option>
                             </select>
                         </div>
                     </div>
@@ -58,7 +51,6 @@ if(redacteur()){
                     <div class="col-md-6">
                         <div class="form-group">
                             <select id="inputState1" name="categ_livre"  class="form-control categ_livre">
-                                <option value="nouveau_test" selected>Nouveau Testament</option>
                                 <option value="ancien_test">Ancien Testament</option>
                             </select>
                         </div>
@@ -66,8 +58,8 @@ if(redacteur()){
                     <div class="col-md-6">
                         <div class="form-group">
                             <select id="inputState2" name="type_liv"  class="form-control type_liv">
-                                <option value="Les Evangiles" selected>Les Evangiles</option>
-                                <option value="Livre de la Révélation">Livre de la Révélation</option>
+                                <option value="Le Pentateuque" selected>Le Pentateuque</option>
+                                <!-- <option value="Livres historiques">Livres historiques</option> -->
                             </select>
                         </div>
                     </div>

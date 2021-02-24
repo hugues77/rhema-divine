@@ -187,6 +187,15 @@
 }
 
 /*  fin margin pour les livre de la bible a gauche*/
+
+/*  margin pour topbar/ Menu formulaire de recherche a gauche*/
+
+.margintitremenu{
+    margin-left: 20%;
+    position:right;
+}
+
+/* fin margin pour topbar/ Menu formulaire de recherche a gauche*/
  
  @media (max-width: 575.98px) {
      .phone_cache {

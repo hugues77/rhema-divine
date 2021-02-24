@@ -73,91 +73,97 @@
               
               if(isset($_POST['search'])){
                 $categ = $_POST['categorie'];
-                if($categ ==="Musique"){
-                  //affiche categorie Musique ici
-                  foreach($req1 as $reqM): ?>
-                  <div class="row card-body">
-                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="card-deck">
-                          <div class="card">
-                            <a href="index.php?page=publication&id=<?= $reqM->id ?>"><img class="card-img-top" src="images/<?=$reqM->image ?>" width="130px" height="80px"/></a>
-                          </div>
-                        </div> 
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                        <div class="text-dark">
-                          <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqM->id ?>"><h4 class="text-left"><?= ucfirst(substr(nl2br($reqM->titre),0,18))?>...</h4></a>
-                          <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqM->date_publier ))?></small></p>
-                        </div>
-                      </div>
-                  </div><hr>
-                  <?php endforeach;
-                  
-                  }elseif(($categ ==="Predication")|| ($categ ==="")){
-                    //affiche categorie prédication ici
-                    foreach($req2 as $reqP): ?>
-                    <div class="row card-body">    
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="card-deck">
-                            <div class="card">
-                            <a href="index.php?page=publication&id=<?= $reqP->id ?>"><img class="card-img-top" src="images/<?=$reqP->image ?>" width="130px" height="80px"/></a>
+                if(empty($categ)){
+                  ?>
+                  <div class="alert alert-danger">Vous devriez sélectionner une valeur pour votre recherche!</div>
+                  <?php
+                }else{
+                    if($categ ==="Musique"){
+                        //affiche categorie Musique ici
+                        foreach($req1 as $reqM): ?>
+                          <div class="row card-body">
+                              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="card-deck">
+                                  <div class="card">
+                                    <a href="index.php?page=publication&id=<?= $reqM->id ?>"><img class="card-img-top" src="images/<?=$reqM->image ?>" width="130px" height="80px"/></a>
+                                  </div>
+                                </div> 
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="text-dark">
+                                  <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqM->id ?>"><h4 class="text-left"><?= ucfirst(substr(nl2br($reqM->titre),0,18))?>...</h4></a>
+                                  <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqM->date_publier ))?></small></p>
+                                </div>
+                              </div>
+                          </div><hr>
+                        <?php endforeach;
+                      
+                      }elseif(($categ ==="Predication")|| ($categ ==="")){
+                        //affiche categorie prédication ici
+                        foreach($req2 as $reqP): ?>
+                        <div class="row card-body">    
+                            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                              <div class="card-deck">
+                                <div class="card">
+                                <a href="index.php?page=publication&id=<?= $reqP->id ?>"><img class="card-img-top" src="images/<?=$reqP->image ?>" width="130px" height="80px"/></a>
+                                </div>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="text-dark">
-                          <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
-                            <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></p>
-                          </div>
-                        </div>
-                    </div><hr>
-                  <?php endforeach;
-                  }
-                //categorie Cuisine
-                
-                elseif($categ ==="Cuisine"){
-                //affiche categorie Musique ici
-                  foreach($req3 as $reqC): ?>
-                    <div class="row card-body">          
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="card-deck">
-                            <div class="card">
-                              <a href="index.php?page=publication&id=<?= $reqC->id ?>"><img class="card-img-top" src="images/<?=$reqC->image ?>" width="130px" height="80px"/></a>
+                            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                              <div class="text-dark">
+                              <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqP->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqP->titre),0,20))?> ...</h4></a>
+                                <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqP->date_publier ))?></small></p>
+                              </div>
                             </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="text-dark">
-                            <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqC->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqC->titre),0,20))?> ...</h4></a>
-                            <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqC->date_publier ))?></small></p>
-                          </div>
-                        </div>
-                    </div><hr>
-                  <?php endforeach;
+                        </div><hr>
+                      <?php endforeach;
+                      }
+                    //categorie Cuisine
+                    
+                    elseif($categ ==="Cuisine"){
+                      //affiche categorie Musique ici
+                      foreach($req3 as $reqC): ?>
+                        <div class="row card-body">          
+                            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                              <div class="card-deck">
+                                <div class="card">
+                                  <a href="index.php?page=publication&id=<?= $reqC->id ?>"><img class="card-img-top" src="images/<?=$reqC->image ?>" width="130px" height="80px"/></a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                              <div class="text-dark">
+                                <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqC->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqC->titre),0,20))?> ...</h4></a>
+                                <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqC->date_publier ))?></small></p>
+                              </div>
+                            </div>
+                        </div><hr>
+                      <?php endforeach;
 
-                  //categorie les deux omers
+                      //categorie les deux omers
 
                     }else{
-                    //affiche categorie Musique ici
-                    foreach($req4 as $reqD): ?>
-                    <div class="row card-body">   
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="card-deck">
-                            <div class="card">
-                              <a href="index.php?page=publication&id=<?= $reqD->id ?>"><img class="card-img-top" src="images/<?=$reqD->image ?>" width="130px" height="80px"/></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                          <div class="text-left text-dark">
-                            <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqD->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqD->titre),0,20))?> ...</h4></a>
-                            <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqD->date_publier ))?></small></p>
-                          </div>
-                        </div>
-                    </div><hr>
-                  <?php endforeach;
-                  }
+                        //affiche categorie Musique ici
+                        foreach($req4 as $reqD): ?>
+                          <div class="row card-body">   
+                              <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                                <div class="card-deck">
+                                  <div class="card">
+                                    <a href="index.php?page=publication&id=<?= $reqD->id ?>"><img class="card-img-top" src="images/<?=$reqD->image ?>" width="130px" height="80px"/></a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                                <div class="text-left text-dark">
+                                  <a class="text-decoration-none" href="index.php?page=publication&id=<?= $reqD->id ?>"><h4 class="text-left"><?=ucfirst(substr(nl2br($reqD->titre),0,20))?> ...</h4></a>
+                                  <p class="card-text text-danger"><small class="text-right"><i class="far fa-calendar-alt mr-2"></i><?= date("d/m/Y",strtotime($reqD->date_publier ))?></small></p>
+                                </div>
+                              </div>
+                          </div><hr>
+                        <?php endforeach;
+                    }
                 }
+              }
               //on affiche les deux omers avant le selection du categorie
               ?>
             <div class="card">

@@ -31,7 +31,7 @@ if(!$res){
                     </div>
                 </div>  
             </div>
-            <div class="col-md-9 description">
+            <div class="col-md-9 description"> 
                 
             </div>
             

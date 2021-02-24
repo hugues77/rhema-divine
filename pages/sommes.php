@@ -1,7 +1,7 @@
 <?php
     //require_once '../header.php'; 
   ?>
-   <header class="header6">
+    <header class="header6">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -18,7 +18,7 @@
           <p class="lead text-muted">Comprendre clairement et honnetement la raison  naturelle de l'existence du site rhema divine et son équipe; Une seule chaine et une révélation nous suffit.</p>
           
         </div>
-      </section>
+    </section>
     <section class="container">
         <div class="row text-justify">
             <div class="mt-1 col-xs-12 col-lg-6 col-sm-12 col-md-6">

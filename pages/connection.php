@@ -105,7 +105,7 @@
      * Evangiles
      *  */
 
-    $bible = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Les Evangiles'  ORDER BY id");
+    $bible = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Les Evangiles'  ORDER BY id DESC");
     $eva = $bible->fetchAll(PDO::FETCH_OBJ);
 
     /**
@@ -114,7 +114,7 @@
      *  */
 
     $bible2 = $connexion->query("SELECT DISTINCT livre FROM bible WHERE type_liv ='Actes des Apotres'  ORDER BY id");
-    $actes = $bible2->fetchAll(PDO::FETCH_OBJ);
+    $actes = $bible2->fetchAll(PDO::FETCH_OBJ); 
     
      /**
      * requete pour afficher Tous les   livres grouper par type livre

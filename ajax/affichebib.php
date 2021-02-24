@@ -1,6 +1,6 @@
 <?php
 require_once 'connexion.php'; 
-$sq = "SELECT verset, description, jesus, titre FROM bible WHERE chapitre='{$_POST['chapitre']}' AND livre='{$_POST['livre']}' ORDER BY id ";
+$sq = "SELECT verset, description, jesus, titre FROM bible WHERE chapitre='{$_POST['chapitre']}' AND livre='{$_POST['livre']}' ORDER BY id  AND chapitre ";
 $aff = $connexion->query($sq);
 $result = $aff->fetchAll(PDO::FETCH_OBJ);
 
@@ -22,7 +22,7 @@ $result = $aff->fetchAll(PDO::FETCH_OBJ);
         <?php foreach($result as $res): ?>
             <div class="col-md-12">
                 <h4 class="text-center text-danger"><?=$res->titre?></h4>
-                <span class="text-justify"><?=$res->verset?>. </span><span class="text-justify <?= (($res->jesus) == 1 ? "text-danger" : "")?>"><?=$res->description?></span>
+                <span class="text-justify"><strong><?=$res->verset?></strong>. </span><span class="text-justify <?= (($res->jesus) == 1 ? "text-danger" : "")?>"><?=$res->description?></span>
             </div>
         <?php endforeach; ?>
     </div>

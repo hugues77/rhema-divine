@@ -24,7 +24,7 @@
         
     </div>   -->
 
-    <!-- Traitement PHP  -->
+    <!-- Traitement PHP  --> 
 
     <div class="container">
         <form action="index.php?page=result" method="POST" class="">
