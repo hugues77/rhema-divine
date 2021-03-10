@@ -116,12 +116,10 @@
     <script type="text/javascript" src="js/sweetalert.js"></script>
   
     <?php
-        $pages_js = scandir('js/');
-        if(in_array($page.'.func.js',$pages_js)){ ?>
-          <script type="text/javascript" src="js/<?=$page ?>.func.js"></script>
-        <?php }
+        
         //pour page index.js
-        //$pages_js = scandir('js/');
+        $pages_js = scandir('js/');
+        
         if(in_array('index.js',$pages_js)){ ?>
           <script type="text/javascript" src="js/index.js"></script>
         <?php }

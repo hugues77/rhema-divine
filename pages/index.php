@@ -1,9 +1,10 @@
 
   <?php
-    require_once 'connection.php';
-    $index="Bienvenue dans Rhema divine !";
+    $page = "index";
+    //require_once 'connection.php';
+    //$index="Bienvenue dans Rhema divine !";
   
- //var_dump($articles);?>
+    //var_dump($articles);?>
 
 
 

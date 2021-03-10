@@ -1,6 +1,6 @@
 <?php
     
-    $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','');
+    $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','root');
     //preparer la requete
     $req = $connexion->query("SELECT * FROM article WHERE poster='1' ORDER BY date_publier DESC LIMIT 0,6");
 

@@ -1,6 +1,5 @@
 <?php
    
-    require_once 'main-functions.php';
     $heure = date("H:i"); 
     
     /**
