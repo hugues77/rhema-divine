@@ -1,5 +1,5 @@
 <?php
-require_once 'pages/connection.php';
+require_once 'connection.php';
 //var_dump($reqV);
 
 

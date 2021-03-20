@@ -1,5 +1,5 @@
 <?php
-   
+    $page = 'predications';
     $heure = date("H:i"); 
     
     /**
@@ -74,7 +74,7 @@
         </div>
     </div>
     <!-- menu-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
         <a class="navbar-brand me-3" href="/"><img src="images/rd.png" class="rounded ms-2 me-1" width="15%"/>Rhema divine</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -86,22 +86,22 @@
                     <a class="nav-link" href="/">Accueil <span class="sr-only"></span></a>
                 </li>
                 <li class="ms-2  nav-item <?php echo($page == "predications") ||($page == "publication")? "active" : "" ?>">
-                    <a class="nav-link" href="index.php?page=predications">Prédications</a>
+                    <a class="nav-link" href="/predications">Prédications</a>
                 </li>
                 <li class="ms-2 nav-item <?php echo($page == "musiques") ||($page == "musique")? "active" : "" ?>">
-                    <a class="nav-link" href="index.php?page=musiques">Musiques</a>
+                    <a class="nav-link" href="/musiques">Musiques</a>
                 </li>
                 <li class="ms-2 nav-item <?php echo($page == "forum")? "active": ""  ?>">
-                    <a class="nav-link" href="index.php?page=forum">Forum Chrétien</a>
+                    <a class="nav-link" href="/forum">Forum Chrétien</a>
                 </li>
                 <li class="ms-2 nav-item <?php echo($page == "bible")? "active": ""  ?>">
-                    <a class="nav-link" href="index.php?page=bible">La Bible</a>
+                    <a class="nav-link" href="/bible">La Bible</a>
                 </li>
                 <!-- <li class="nav-item <?php //echo($page == "trouver_eglise")? "active": ""  ?>">
                     <a class="nav-link" href="index.php?page=trouver_eglise">Trouvez une église</a>
                 </li> -->
                 <li class="ms-2 nav-item <?php echo($page == "sommes")? "active": ""  ?>">
-                    <a class="nav-link" href="index.php?page=sommes">Nous sommes</a>
+                    <a class="nav-link" href="<?= $router->generate('contact_nom')?>">Nous sommes</a>
                 </li>
             </ul>
             

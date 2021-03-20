@@ -10,6 +10,7 @@
           
           <form action="" method="POST" class="form-group">
               <?php
+              $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','root');
                 if(isset($_POST['btn_pred'])){
                   $titre = htmlentities(trim($_POST['theme_pred']));
                   $data2 ="";

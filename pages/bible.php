@@ -1,4 +1,6 @@
 <?php
+    
+    $connexion = new PDO('mysql:host=localhost; dbname=rhema','root','root');
     require_once 'connection.php';
     $title = "la bible direct de rhema divine!"
     ?>
